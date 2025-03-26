@@ -6,9 +6,7 @@ import { ThemedView } from '@/components/ThemedView';
 
 export default function More() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-    >
+    <ParallaxScrollView>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Mer informasjon</ThemedText>
       </ThemedView>
