@@ -1,36 +1,37 @@
+import { useEffect, useState } from 'react';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import {
-  useFonts,
-  Poppins_400Regular,
-  Poppins_600SemiBold,
-  Poppins_700Bold,
-} from '@expo-google-fonts/poppins';
+import { useFonts, Poppins_400Regular, Poppins_600SemiBold, Poppins_700Bold, } from '@expo-google-fonts/poppins';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import initializeI18n from '@/lang/i18n';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
+  const [ready, setReady] = useState(false);
+  const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_600SemiBold,
     Poppins_700Bold,
   });
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+    const prepare = async () => {
+      await initializeI18n(); 
+      if (fontsLoaded) {
+        setReady(true);
+        await SplashScreen.hideAsync();
+      }
+    };
+    prepare();
+  }, [fontsLoaded]);
 
-  if (!loaded) {
+  if (!ready) {
     return null;
   }
 
@@ -45,3 +46,7 @@ export default function RootLayout() {
   );
 }
 
+
+/* Kilder
+* Expo fonts - https://docs.expo.dev/develop/user-interface/fonts/
+*/

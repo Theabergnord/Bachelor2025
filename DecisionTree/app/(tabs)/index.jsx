@@ -1,33 +1,76 @@
-import { StyleSheet } from 'react-native';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { useRouter } from 'expo-router';
+import LanguageSelector from '../../components/LanguageSelector';
+import { ThemedView } from '../../components/ThemedView'; // 🧩 Importer ThemedView
 
-export default function Homescreen() {
+export default function IndexScreen() {
+  const { t } = useTranslation();
+  const router = useRouter();
+
   return (
-    <ParallaxScrollView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Home</ThemedText>
+    <ThemedView style={styles.container}>
+      <ThemedView style={styles.languageButton}>
+        <LanguageSelector />
       </ThemedView>
 
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText>
-          Dette er hjemskjermen
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <Image
+        source={require('../../assets/images/Logo_bildeogtekst.png')}
+        style={styles.logo}
+        resizeMode="contain"
+      />
+
+      <TouchableOpacity style={styles.startButton} onPress={() => router.push('/guidelines')}>
+        <Text style={styles.startText}>{t('START')}</Text>
+      </TouchableOpacity>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  languageButton: {
+    position: 'absolute',
+    top: 60,
+    right: 20,
+  },
+  logo: {
+    width: 290,
+    height: 290,
+    marginBottom: 100,
+  },
+  startButton: {
+    backgroundColor: '#345641',
+    paddingVertical: 16,
+    paddingHorizontal: 30,
+    borderRadius: 40,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  startText: {
+    color: '#fff',
+    fontSize: 26,
+    fontFamily: 'Poppins_600SemiBold',
+    lineHeight: 30,
+    textAlignVertical: 'center',
+    textAlign: 'center',
+    marginBottom: -4,
   },
 });
+
+/* Kilder
+* Image - https://reactnative.dev/docs/image 
+* */
+
+
+
 
