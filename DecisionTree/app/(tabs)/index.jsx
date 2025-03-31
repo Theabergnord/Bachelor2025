@@ -2,11 +2,16 @@ import { StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
 import LanguageSelector from '../../components/LanguageSelector';
-import { ThemedView } from '../../components/ThemedView'; // 🧩 Importer ThemedView
+import { ThemedView } from '../../components/ThemedView';
+{/* Nesteknapp
+  import NextButton from '../../components/NextButton'; */}
 
 export default function IndexScreen() {
   const { t } = useTranslation();
   const router = useRouter();
+
+  {/* Nesteknapp
+    const handleNeste = () => {} */}
 
   return (
     <ThemedView style={styles.container}>
@@ -19,6 +24,9 @@ export default function IndexScreen() {
         style={styles.logo}
         resizeMode="contain"
       />
+
+      {/* Nesteknappen
+      <NextButton onPress={handleNeste} text="Neste" />*/}
 
       <TouchableOpacity style={styles.startButton} onPress={() => router.push('/guidelines')}>
         <Text style={styles.startText}>{t('START')}</Text>
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     textAlignVertical: 'center',
     textAlign: 'center',
-    marginBottom: -4,
+    marginBottom: -2,
   },
 });
 
