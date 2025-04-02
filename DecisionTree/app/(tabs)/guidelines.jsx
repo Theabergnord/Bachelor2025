@@ -16,8 +16,8 @@ const GuidelinesScreen = () => {
     setModalVisible(true);
   };
 
-  const outerRadius = 130; // Ytre radius
-  const innerRadius = 80;  // Indre radius (hvit sirkel)
+  const outerRadius = 160; // Ytre radius
+  const innerRadius = 100;  // Indre radius (hvit sirkel)
   const centerX = outerRadius + 10;
   const centerY = outerRadius + 10;
 
@@ -27,8 +27,8 @@ const GuidelinesScreen = () => {
       <ThemedText style={styles.backButton}>← Forrige</ThemedText>
 
       {/* Tittel */}
-      <ThemedText style={styles.title}>FØR GJENNOMFØRING</ThemedText>
-      <ThemedText style={styles.subtitle}>RETNINGSLINJER</ThemedText>
+      <ThemedText style={styles.subtitle}>FØR GJENNOMFØRING</ThemedText>
+      <ThemedText style={styles.title}>RETNINGSLINJER</ThemedText>
 
       {/* Tips-boksen */}
       <TipsBox subtitle="Klikk på tallene for å lese retningslinjene" />
@@ -151,18 +151,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   title: {
-    fontSize: 18,
     color: '#2E443E',
-    marginTop: 20,
+    marginTop: 0,
+    marginBottom: 20,
     textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: 24,
     fontWeight: 'bold',
     fontFamily: Platform.OS === 'ios' ? 'Rubik-Bold' : 'Rubik',
+  },
+  subtitle: {
     color: '#2E443E',
-    marginBottom: 20,
-    marginTop: 10,
+    marginBottom: 0,
+    marginTop: 0,
     textAlign: 'center',
     lineHeight: 28
   },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { ThemedText } from '@/components/ThemedText'; // Importer ThemedText
+import { ThemedText } from '@/components/ThemedText';
 
 export default function TipsBox({ title = 'Tips!', subtitle }) {
   return (
@@ -19,24 +19,23 @@ export default function TipsBox({ title = 'Tips!', subtitle }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#E8F5E9', // Lys grønn bakgrunn
+    backgroundColor: '#E8F5E9',
     paddingVertical: 15,
     paddingHorizontal: 25,
-    borderRadius: 15, // Avrundede hjørner
+    borderRadius: 15,
     alignItems: 'center',
-    borderWidth: 3, // Tykkere border
-    borderColor: '#2E443E', // Mørk grønn farge
-    marginBottom: 30,
+    borderWidth: 3,
+    borderColor: '#2E443E',
+    marginBottom: 10,
   },
   title: {
-    fontSize: 24, // Større fontstørrelse for "Tips!"
-    fontWeight: 'bold', // Bold styling
-    color: '#2E443E', // Mørk grønn farge
+    fontSize: 24,
+    fontWeight: 'bold', 
+    color: '#2E443E',
     marginBottom: 5,
   },
   subtitle: {
-    fontSize: 16, // Vanlig fontstørrelse for underteksten
-    color: '#2E443E', // Mørk grønn farge
+    color: '#2E443E', 
     textAlign: 'center',
   },
 });
