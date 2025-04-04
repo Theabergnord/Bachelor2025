@@ -65,6 +65,19 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="decisionTreePage"
+        options={{
+          title: 'Tree',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "ellipsis-horizontal" : "ellipsis-horizontal-outline"}
+              size={28}
+              color={color}
+            />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

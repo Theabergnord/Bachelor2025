@@ -9,9 +9,9 @@ export default function ParallaxScrollView({ children }) {
   return (
     <ThemedView style={styles.container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Text style={styles.backButtonText}>{'<'} Forrige</Text>
-        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.pop()} style={styles.backButton}>
+  <Text style={styles.backButtonText}>{'<'} Forrige</Text>
+</TouchableOpacity>
       </View>
 
       <View style={styles.content}>{children}</View>
