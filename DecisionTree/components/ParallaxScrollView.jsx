@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
   },
   backButton: {
     paddingVertical: 10,
+    position: 'absolute',
+    top: 50,
+    left: 16,
   },
   backButtonText: {
     fontSize: 16,
