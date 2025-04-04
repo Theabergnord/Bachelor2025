@@ -50,6 +50,8 @@ const styles = StyleSheet.create({
     gap: 40, 
     marginTop: 40, 
     alignItems: 'center',
+    position: 'absolute',
+    bottom: 150,
   },
   noButton: {
     backgroundColor: '#fff',
@@ -73,13 +75,13 @@ const styles = StyleSheet.create({
   },
   noButtonText: {
     color: '#345641', 
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   yesButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
   },
