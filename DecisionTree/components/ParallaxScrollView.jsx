@@ -11,9 +11,9 @@ export default function ParallaxScrollView({ children, noPadding = false, hideBa
       <SafeAreaView style={styles.safeArea}>
         {!hideBack && (
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Text style={styles.backButtonText}>{'<'} Forrige</Text>
-        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.pop()} style={styles.backButton}>
+  <Text style={styles.backButtonText}>{'<'} Forrige</Text>
+</TouchableOpacity>
       </View>
       )}
       </SafeAreaView>
@@ -46,6 +46,9 @@ const styles = StyleSheet.create({
   },
   backButton: {
     paddingVertical: 10,
+    position: 'absolute',
+    top: 50,
+    left: 16,
   },
   backButtonText: {
     fontSize: 16,
