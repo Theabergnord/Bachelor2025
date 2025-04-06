@@ -1,26 +1,39 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Platform, StatusBar, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ThemedView } from '@/components/ThemedView';
 
-export default function ParallaxScrollView({ children }) {
+export default function ParallaxScrollView({ children, noPadding = false, hideBack = false }) {
   const navigation = useNavigation();
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={styles.root}>
+      <SafeAreaView style={styles.safeArea}>
+        {!hideBack && (
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <Text style={styles.backButtonText}>{'<'} Forrige</Text>
         </TouchableOpacity>
       </View>
+      )}
+      </SafeAreaView>
 
-      <View style={styles.content}>{children}</View>
+      <ScrollView style={styles.scroll} contentContainerStyle={{ ...(noPadding ? styles.noPadding : styles.content), flexGrow: 1, paddingBottom: 40, }} keyboardShouldPersistTaps="handled">
+        {children}
+      </ScrollView>
     </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
+    flex: 1,
+  },
+  safeArea: {
+    backgroundColor: '#fff',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight || 24 : 0,
+  },
+  scroll: {
     flex: 1,
   },
   headerContainer: {
@@ -39,10 +52,18 @@ const styles = StyleSheet.create({
     color: '#345641',
   },
   content: {
-    flex: 1,
     padding: 32,
     gap: 16,
-    overflow: 'hidden',
+    alignItems: 'stretch',
   },
+  noPadding: {
+    paddingHorizontal: 0,
+  }
 });
+
+/* Kilder
+* Statusbar - https://reactnative.dev/docs/statusbar
+* Optional Props - https://www.dhiwise.com/post/how-react-optional-props-can-improve-the-maintainability
+* ScrollView - https://reactnative.dev/docs/scrollview
+*/
 
