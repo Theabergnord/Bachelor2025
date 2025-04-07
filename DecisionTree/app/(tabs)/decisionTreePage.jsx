@@ -1,30 +1,58 @@
 import React, { useState } from 'react';
 import Step from '../../components/Questions';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import Feedback from '../../components/Feedback';
+import Feedback from '../../components/Feedback';                  
+import decisionTreeData from '../data/decisionTreeData';
 
 const DecisionTreePage = () => {
-  const [step, setStep] = useState(1);
-  const totalSteps = 8;
+  const [currentId, setCurrentId] = useState('q1');
+  const [feedback, setFeedback] = useState(null);
+
+  const currentNode = decisionTreeData.find((node) => node.id === currentId);
+
 
   const handleAnswer = (answer) => {
-    console.log(`Svar: ${answer}`);
-    if (step < totalSteps) {
-      setStep(step + 1);
+    const selectedOption = currentNode.options[answer ? 0 : 1];
+
+    if (selectedOption.next) {
+      setCurrentId(selectedOption.next);
+    } else if (selectedOption.feedback) {
+      setFeedback(selectedOption.feedback);
     }
   };
 
-  const questions = [
-    "Er du klar til å begynne?",
-    "Har du det du trenger?",
-  ];
+  if (!currentNode && feedback) {
+    return (
+      <ParallaxScrollView>
+        <Step
+          stepNumber={1}
+          totalSteps={1}
+          question={`Du fikk tilbakemeldingen: ${feedback}`}
+          onAnswer={() => setCurrentId('q1')} 
+        />
+      </ParallaxScrollView>
+    );
+  }
+
+  if (!currentNode) {
+    return (
+      <ParallaxScrollView>
+        <Step
+          stepNumber={1}
+          totalSteps={1}
+          question="Beslutningstreet er ferdig."
+          onAnswer={() => setCurrentId('q1')}
+        />
+      </ParallaxScrollView>
+    );
+  }
 
   return (
     <ParallaxScrollView>
-        <Step
-        stepNumber={step}
-        totalSteps={totalSteps}
-        question={questions[step - 1]}
+      <Step
+        stepNumber={1} // Midlertidig, regn steg ut fra posisjon i treet
+        totalSteps={1}
+        question={currentNode.question}
         onAnswer={handleAnswer}
       />
     </ParallaxScrollView>
