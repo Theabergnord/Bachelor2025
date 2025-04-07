@@ -41,7 +41,7 @@ const GuidelinesScreen = () => {
       const startAngle = ((index - 0.5) / numbers.length) * Math.PI * 2 - Math.PI / 2;
       const endAngle = ((index + 0.5) / numbers.length) * Math.PI * 2 - Math.PI / 2;
 
-      // Beregn punkter for segmentene
+      // Beregn punkter for tall i retningslinjene
       const x1 = centerX + outerRadius * Math.cos(startAngle);
       const y1 = centerY + outerRadius * Math.sin(startAngle);
       const x2 = centerX + innerRadius * Math.cos(startAngle);
