@@ -46,8 +46,6 @@ const styles = StyleSheet.create({
   },
   backButton: {
     paddingVertical: 10,
-    position: 'absolute',
-    top: 50,
     left: 16,
   },
   backButtonText: {
@@ -68,5 +66,6 @@ const styles = StyleSheet.create({
 * Statusbar - https://reactnative.dev/docs/statusbar
 * Optional Props - https://www.dhiwise.com/post/how-react-optional-props-can-improve-the-maintainability
 * ScrollView - https://reactnative.dev/docs/scrollview
+* paddingTop: Platform.OS osv. - https://stackoverflow.com/questions/64926356/paddingtop-platform-os-android-statusbar-currentheight-0 
 */
 

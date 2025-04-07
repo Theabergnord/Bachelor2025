@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Step from '../../components/Questions';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
+import Feedback from '../../components/Feedback';
 
 const DecisionTreePage = () => {
   const [step, setStep] = useState(1);

@@ -15,5 +15,11 @@
     "QUESTION": "Question",
     "YES": "Yes",
     "NO": "No"
+    ,
+    "FEEDBACK_TITLE": {
+        "red": "Do not proceed!",
+        "yellow": "Before you continue"
+    },
+    "DEFAULT_FEEDBACK_MESSAGE": "Feedback missing - this is a test text."
    }
   }

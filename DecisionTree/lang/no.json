@@ -1,19 +1,28 @@
 {
     "translation": {
-    "START": "START",
-    "NORWEGIAN": "Norsk",
-    "ENGLISH": "Engelsk",
-    "LANGUAGE": "Språk",
-    "SELECT": "Velg språk",
-    "HOME": "Hjem",
-    "GUIDELINES": "Retningslinjer",
-    "MORE": "Mer",
-    "TIPS": "Tip",
-    "NEXT": "Neste",
-    "PREVIOUS": "Forrige",
-    "STEP": "Trinn",
-    "QUESTION": "Spørsmål",
-    "YES": "Ja",
-    "NO": "Nei"
-   }
+      "START": "START",
+      "NORWEGIAN": "Norsk",
+      "ENGLISH": "Engelsk",
+      "LANGUAGE": "Språk",
+      "SELECT": "Velg språk",
+      "HOME": "Hjem",
+      "GUIDELINES": "Retningslinjer",
+      "MORE": "Mer",
+      "TIPS": "Tip",
+      "NEXT": "Neste",
+      "PREVIOUS": "Forrige",
+      "STEP": "Trinn",
+      "QUESTION": "Spørsmål",
+      "YES": "Ja",
+      "NO": "Nei",
+  
+      "FEEDBACK_TITLE": {
+        "red": "Ikke gå videre!",
+        "yellow": "Før du går videre"
+      },
+  
+      "DEFAULT_FEEDBACK_MESSAGE": "Tilbakemelding mangler - dette er en testtekst."
+    }
   }
+  
+  

@@ -40,6 +40,7 @@ export default initializeI18n;
 
 
 
+
 /*Kilder
 * i18n asyncStorage - https://medium.com/@lasithherath00/implementing-react-native-i18n-and-language-selection-with-asyncstorage-b24ae59e788e
 * i18n localize - https://medium.com/@svbala99/building-a-fully-localized-react-native-app-with-i18next-react-i18next-and-react-native-localize-8945cdf5e37b
