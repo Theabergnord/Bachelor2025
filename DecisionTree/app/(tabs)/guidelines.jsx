@@ -31,10 +31,9 @@ const GuidelinesScreen = () => {
   const centerY = outerRadius + 10;
 
   return (
+    <ParallaxScrollView noPadding>
     <ThemedView style={styles.container}>
-      {/* Tilbake-knapp */}
-      <ThemedText style={styles.backButton}>← Forrige</ThemedText>
-
+  
       {/* Tittel */}
       <ThemedText style={styles.subtitle}>FØR GJENNOMFØRING</ThemedText>
       <ThemedText style={styles.title}>RETNINGSLINJER</ThemedText>
@@ -140,6 +139,7 @@ const GuidelinesScreen = () => {
         </View>
       </Modal>
     </ThemedView>
+    </ParallaxScrollView>
   );
 };
 
