@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Step from '../../components/Questions';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import Feedback from '../../components/Feedback';                  
@@ -6,21 +6,23 @@ import decisionTreeDataNO from '../data/decisionTreeDataNO';
 import decisionTreeDataEN from '../data/decisionTreeDataEN';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
-import { useFocusEffect } from 'expo-router';
+import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback } from 'react';
 
 const DecisionTreePage = () => {
   const { t, i18n } = useTranslation()
   const router = useRouter()
+  const { reset } = useLocalSearchParams()
   const [currentId, setCurrentId] = useState('q1');
   const [feedbackOption, setFeedbackOption] = useState(null);
 
-  useFocusEffect(
-    useCallback(() => {
+  useEffect(() => {
+    if (reset === 'true') {
       setCurrentId('q1')
       setFeedbackOption(null)
-    }, [])
-  );
+      router.setParams({ reset: undefined })
+    }
+  }, [reset])
 
   const decisionTreeData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN
   const currentNode = decisionTreeData.find((node) => node.id === currentId);
@@ -49,11 +51,7 @@ const DecisionTreePage = () => {
 
     const handleNext = () => {
       if (feedbackOption.feedbackType === 'red') {
-        setFeedbackOption(null)
-        setCurrentId('q1')
-        setTimeout(() => {
-          router.replace('/')
-        }, 0);
+        router.replace({ pathname: '/', params: { reset: 'true' } })
       } else {
         const fallbackNext = matchedOption?.next ?? null
         if (fallbackNext) {

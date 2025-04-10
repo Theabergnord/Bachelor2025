@@ -28,9 +28,13 @@ export default function IndexScreen() {
       {/* Nesteknappen
       <NextButton onPress={handleNeste} text="Neste" />*/}
 
-      <TouchableOpacity style={styles.startButton} onPress={() => router.push('/(tabs)/decisionTreePage')}>
-        <Text style={styles.startText}>{t('START')}</Text>
-      </TouchableOpacity>
+<TouchableOpacity
+  style={styles.startButton}
+  onPress={() => router.push({ pathname: '/(tabs)/decisionTreePage', params: { reset: 'true' } })}
+>
+  <Text style={styles.startText}>{t('START')}</Text>
+</TouchableOpacity>
+
     </ThemedView>
   );
 }

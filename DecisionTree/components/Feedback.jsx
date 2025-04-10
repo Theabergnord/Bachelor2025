@@ -32,11 +32,11 @@ export default function Feedback({ feedbackType = 'green', message = '', onNext 
 
   const handlePress = () => {
     if (feedbackType === 'red') {
-      router.replace('/')
+      router.replace({ pathname: '/', params: { reset: 'true' } })
     } else {
       onNext()
     }
-  }
+  };
 
   return (
     <ParallaxScrollView noPadding>
