@@ -1,5 +1,6 @@
 import { StyleSheet, Image, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { useRouter } from 'expo-router'
 import { ThemedText } from './ThemedText'
 import NextButton from './NextButton'
 import ParallaxScrollView from './ParallaxScrollView'
@@ -21,11 +22,21 @@ const feedbackMap = {
 
 export default function Feedback({ feedbackType = 'green', message = '', onNext }) {
   const { t } = useTranslation()
+  const router = useRouter()
   const { color, icon } = feedbackMap[feedbackType]
   const showFeedback = feedbackType !== 'green'
 
   const title = t(`FEEDBACK_TITLE.${feedbackType}`)
   const finalMessage = message || t('DEFAULT_FEEDBACK_MESSAGE')
+  const buttonLabel = feedbackType === 'red' ? t('EXIT') : t('NEXT')
+
+  const handlePress = () => {
+    if (feedbackType === 'red') {
+      router.replace('/')
+    } else {
+      onNext()
+    }
+  }
 
   return (
     <ParallaxScrollView noPadding>
@@ -49,7 +60,7 @@ export default function Feedback({ feedbackType = 'green', message = '', onNext 
           </>
         )}
 
-        <NextButton onPress={onNext} text={t('NEXT')} style={{ marginBottom: 32 }} />
+        <NextButton onPress={handlePress} text={buttonLabel} style={{ marginBottom: 32 }} />
       </View>
     </ParallaxScrollView>
   )

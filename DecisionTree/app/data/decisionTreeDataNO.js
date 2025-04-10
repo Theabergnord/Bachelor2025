@@ -1,4 +1,4 @@
-const decisionTreeData = [
+const decisionTreeDataNO = [
     {
       id: 'q1',
       question: 'Er utøveren over 18 år?',
@@ -10,7 +10,7 @@ const decisionTreeData = [
         {
           label: 'Nei',
           feedbackType: 'red',
-          feedbackMessage: 'Her kommer tilbakemeldingen!',
+          feedbackMessage: 'Det anbefales ikke å måle BC hos utøvere under 18 år.',
         },
       ],
     },
@@ -25,7 +25,7 @@ const decisionTreeData = [
         {
           label: 'Nei',
           feedbackType: 'yellow',
-          feedbackMessage: 'Her kommer tilbakemeldingen!',
+          feedbackMessage: 'Det anbefales at utøveren har tilgang til støttepersoner.',
         },
       ],
     },
@@ -62,5 +62,5 @@ const decisionTreeData = [
     },
   ];
   
-  export default decisionTreeData;
+  export default decisionTreeDataNO;
   

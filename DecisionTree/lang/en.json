@@ -14,7 +14,8 @@
     "STEP": "Step",
     "QUESTION": "Question",
     "YES": "Yes",
-    "NO": "No"
+    "NO": "No",
+    "EXIT": "Exit"
     ,
     "FEEDBACK_TITLE": {
         "red": "Do not proceed!",

@@ -5,15 +5,24 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import TipsBox from '../../components/TipsBox';
 import NextButton from '../../components/NextButton';
+import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next'
+import ParallaxScrollView from '@/components/ParallaxScrollView';
 
 const GuidelinesScreen = () => {
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const router = useRouter()
+  const { t } = useTranslation()
 
   const handleNumberPress = (number) => {
     setSelectedNumber(number);
     setModalVisible(true);
+  };
+
+  const handleNext = () => {
+    router.push('(tabs)/decisionTreePage')
   };
 
   const outerRadius = 160; // Ytre radius
@@ -105,8 +114,8 @@ const GuidelinesScreen = () => {
 </View>
 
 
-      {/* Neste-knapp */}
-      <NextButton onPress={() => console.log('Neste trykket')} text="Neste" />
+<NextButton onPress={handleNext} text={t('NEXT')} style={{ marginBottom: 32 }} />
+  
 
       {/* Modal for å vise informasjon */}
       <Modal
