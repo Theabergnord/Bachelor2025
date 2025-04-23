@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback } from 'react';
+import TransitionMessage from '../../components/TransitionMessage';
 
 const DecisionTreePage = () => {
   const { t, i18n } = useTranslation()
@@ -15,11 +16,13 @@ const DecisionTreePage = () => {
   const { reset } = useLocalSearchParams()
   const [currentId, setCurrentId] = useState('q1');
   const [feedbackOption, setFeedbackOption] = useState(null);
+  const [answers, setAnswers] = useState({});
 
   useEffect(() => {
     if (reset === 'true') {
       setCurrentId('q1')
       setFeedbackOption(null)
+      setAnswers({})
       router.setParams({ reset: undefined })
     }
   }, [reset])
@@ -27,19 +30,47 @@ const DecisionTreePage = () => {
   const decisionTreeData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN
   const currentNode = decisionTreeData.find((node) => node.id === currentId);
 
-  const handleAnswer = (answer) => {
-    const selectedOption = currentNode.options[answer ? 0 : 1];
-    console.log('Valgt svar:', selectedOption);
+  if (currentNode?.isTransition) {
+    return (
+      <ParallaxScrollView>
+        <TransitionMessage
+          message={currentNode.message}
+          onNext={() => setCurrentId(currentNode.next)}
+        />
+      </ParallaxScrollView>
+    )
+  }  
 
-    if (selectedOption.next) {
-      setCurrentId(selectedOption.next)
-    } else if (selectedOption.feedbackType) {
+  const getNextVisibleNode = (fromIndex = -1) => {
+    for (let i = fromIndex + 1; i < decisionTreeData.length; i++) {
+      const node = decisionTreeData[i]
+      if (!node.visibleIf) return node.id
+      const condition = node.visibleIf
+      if (answers[condition.previousQuestion] === condition.expectedAnswer) {
+        return node.id
+      }
+    }
+    return 'q1';
+  }
+
+  const handleAnswer = (answer) => {
+    const selectedOption = currentNode.options[answer ? 0 : 1]
+    const updatedAnswers = { ...answers, [currentNode.id]: selectedOption.label }
+    setAnswers(updatedAnswers)
+
+    if (selectedOption.feedbackType) {
       setFeedbackOption({
         feedbackType: selectedOption.feedbackType,
         feedbackMessage: selectedOption.feedbackMessage,
         next: selectedOption.next ?? null,
-        fromNode: currentId,
-      })
+        fromNode: currentNode.id,
+      });
+    } else if (selectedOption.next) {
+      setCurrentId(selectedOption.next);
+    } else {
+      const currentIndex = decisionTreeData.findIndex((n) => n.id === currentNode.id)
+      const nextVisible = getNextVisibleNode(currentIndex)
+      setCurrentId(nextVisible)
     }
   };
 

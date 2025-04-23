@@ -7,7 +7,7 @@ import ParallaxScrollView from './ParallaxScrollView'
 
 const feedbackMap = {
   red: {
-    color: '#B7220B',
+    color: '#AF0012',
     icon: require('../assets/images/warning_red.png'),
   },
   yellow: {
