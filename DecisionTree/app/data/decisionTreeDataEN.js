@@ -151,13 +151,14 @@ const decisionTreeDataEN = [
         label: 'No',
         feedbackType: 'green',
         feedbackMessage: 'Proceed to the next stage.',
+        next: 't1',
       },
     ],
   },
   {
-    id: 'step1-complete',
+    id: 't1',
     isTransition: true,
-    message: 'Step 1/*step 1 title* is complete. You may now proceed to Step 2/*step 2 title*.',
+    message: 'Step 1 is complete.\n \nYou may now proceed to Step 2.',
     next: 'q11',
   }
   

@@ -41,9 +41,10 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   question: {
-    fontSize: 16,
+    fontSize: 18,
     marginVertical: 16,
     textAlign: 'center',
+    marginTop: 30,
   },
   buttonContainer: {
     flexDirection: 'row',

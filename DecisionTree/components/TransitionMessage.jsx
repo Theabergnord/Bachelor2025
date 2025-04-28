@@ -4,8 +4,8 @@ import NextButton from './NextButton';
 
 export default function TransitionMessage({ message, onNext }) {
     return (
-        <View style={StyleSheet.container}>
-            <ThemedText type="title" style={StyleSheet.text}>{message}</ThemedText>
+        <View style={styles.container}>
+            <ThemedText type="title" style={styles.text}>{message}</ThemedText>
             <NextButton onPress={onNext} text="Next" style={{ marginTop: 32 }} />
         </View>
     )
@@ -17,7 +17,10 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     text: {
-      textAlign: 'center',
-      marginBottom: 20,
+        textAlign: 'center',
+        fontSize: 20,
+        lineHeight: 24,
+        fontFamily: 'Poppins_400Regular',
+        marginBottom: 20,
     },
   });

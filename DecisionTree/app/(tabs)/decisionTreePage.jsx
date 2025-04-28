@@ -14,9 +14,12 @@ const DecisionTreePage = () => {
   const { t, i18n } = useTranslation()
   const router = useRouter()
   const { reset } = useLocalSearchParams()
-  const [currentId, setCurrentId] = useState('q1');
-  const [feedbackOption, setFeedbackOption] = useState(null);
-  const [answers, setAnswers] = useState({});
+  const [currentId, setCurrentId] = useState('q1')
+  const [feedbackOption, setFeedbackOption] = useState(null)
+  const [answers, setAnswers] = useState({})
+
+  const decisionTreeData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN
+  const currentNode = decisionTreeData.find((node) => node.id === currentId)
 
   useEffect(() => {
     if (reset === 'true') {
@@ -25,21 +28,19 @@ const DecisionTreePage = () => {
       setAnswers({})
       router.setParams({ reset: undefined })
     }
-  }, [reset])
+  }, [reset]);
 
-  const decisionTreeData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN
-  const currentNode = decisionTreeData.find((node) => node.id === currentId);
+  const stepMap = [
+    {
+      ids: ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'],
+      title: i18n.language === 'no' ? 'Forberedende steg for vurdering av BC: Før BC-vurderingen utføres' : 'Preparatory Steps for consideration for BC assessment: Before any BC assessment is arranged',
+      totalQuestions: 10,
+    },
+    //Legge til flere steg etterhvert
+  ]
 
-  if (currentNode?.isTransition) {
-    return (
-      <ParallaxScrollView>
-        <TransitionMessage
-          message={currentNode.message}
-          onNext={() => setCurrentId(currentNode.next)}
-        />
-      </ParallaxScrollView>
-    )
-  }  
+  const currentStep = stepMap.find(step => step.ids.includes(currentId)) || {};
+  const currentQuestion = currentStep.ids?.indexOf(currentId) + 1 || 1;
 
   const getNextVisibleNode = (fromIndex = -1) => {
     for (let i = fromIndex + 1; i < decisionTreeData.length; i++) {
@@ -59,6 +60,14 @@ const DecisionTreePage = () => {
     setAnswers(updatedAnswers)
 
     if (selectedOption.feedbackType) {
+      if (selectedOption.next) {
+        const nextNode = decisionTreeData.find(n => n.id === selectedOption.next)
+        if (nextNode?.isTransition) {
+          setCurrentId(nextNode.id)
+          return;
+        }
+      }
+
       setFeedbackOption({
         feedbackType: selectedOption.feedbackType,
         feedbackMessage: selectedOption.feedbackMessage,
@@ -75,9 +84,9 @@ const DecisionTreePage = () => {
   };
 
   if (feedbackOption) {
-    const currentData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN;
-    const currentNodeData = currentData.find((node) => node.id === feedbackOption.fromNode);
-    const matchedOption = currentNodeData?.options.find((o) => o.feedbackType === feedbackOption.feedbackType);
+    const currentData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN
+    const currentNodeData = currentData.find((node) => node.id === feedbackOption.fromNode)
+    const matchedOption = currentNodeData?.options.find((o) => o.feedbackType === feedbackOption.feedbackType)
     const message = matchedOption?.feedbackMessage
 
     const handleNext = () => {
@@ -105,15 +114,14 @@ const DecisionTreePage = () => {
     )
   }
 
+  if (!currentNode) return null
 
-  if (!currentNode) {
+  if (currentNode?.isTransition) {
     return (
       <ParallaxScrollView>
-        <Step
-          stepNumber={1}
-          totalSteps={1}
-          question="Beslutningstreet er ferdig."
-          onAnswer={() => setCurrentId('q1')}
+        <TransitionMessage
+          message={currentNode.message}
+          onNext={() => setCurrentId(currentNode.next)}
         />
       </ParallaxScrollView>
     )
@@ -132,3 +140,4 @@ const DecisionTreePage = () => {
 };
 
 export default DecisionTreePage;
+

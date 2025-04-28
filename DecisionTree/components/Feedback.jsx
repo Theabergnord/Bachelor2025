@@ -78,9 +78,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 80,
     borderTopRightRadius: 80,
     shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: -20 },
-    shadowRadius: 4,
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: -7 },
+    shadowRadius: 5,
     elevation: 4,
   },
   icon: {
@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     marginBottom: 40,
+    fontSize: 18,
   },
 })
 
