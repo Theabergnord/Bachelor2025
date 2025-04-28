@@ -8,6 +8,8 @@ import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback } from 'react';
+import Header from '../../components/Header';
+
 
 const DecisionTreePage = () => {
   const { t, i18n } = useTranslation()
@@ -15,11 +17,13 @@ const DecisionTreePage = () => {
   const { reset } = useLocalSearchParams()
   const [currentId, setCurrentId] = useState('q1');
   const [feedbackOption, setFeedbackOption] = useState(null);
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
     if (reset === 'true') {
       setCurrentId('q1')
       setFeedbackOption(null)
+      setHistory([])
       router.setParams({ reset: undefined })
     }
   }, [reset])
@@ -32,8 +36,10 @@ const DecisionTreePage = () => {
     console.log('Valgt svar:', selectedOption);
 
     if (selectedOption.next) {
+      setHistory((prev) => [...prev, currentId])
       setCurrentId(selectedOption.next)
     } else if (selectedOption.feedbackType) {
+      setHistory((prev) => [...prev, currentId])
       setFeedbackOption({
         feedbackType: selectedOption.feedbackType,
         feedbackMessage: selectedOption.feedbackMessage,
@@ -42,6 +48,18 @@ const DecisionTreePage = () => {
       })
     }
   };
+
+  const handleGoBack = () => {
+    if (history.length > 0) {
+      const newHistory = [...history]
+      const previousId = newHistory.pop()
+      setHistory(newHistory)
+      setCurrentId(previousId)
+      setFeedbackOption(null)
+    } else {
+      router.back()
+    }
+  }
 
   if (feedbackOption) {
     const currentData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN;
@@ -90,9 +108,10 @@ const DecisionTreePage = () => {
 
   return (
     <ParallaxScrollView>
+      <Header onBackPress={handleGoBack} />
       <Step
-        stepNumber={1} // Midlertidig, regn steg ut fra posisjon i treet
-        totalSteps={1}
+        stepNumber={history.length + 1}
+        totalSteps={decisionTreeData.length}
         question={currentNode.question}
         onAnswer={handleAnswer}
       />

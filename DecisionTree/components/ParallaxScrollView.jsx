@@ -1,26 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Platform, StatusBar, ScrollView } from 'react-native';
-//import { useNavigation } from '@react-navigation/native';
 import { ThemedView } from '@/components/ThemedView';
-import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
 
 export default function ParallaxScrollView({ children, noPadding = false, hideBack = false }) {
-  //const navigation = useNavigation();
-
   return (
     <ThemedView style={styles.root}>
       <SafeAreaView style={styles.safeArea}>
-        {!hideBack && (
-        <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-          <View style={styles.backButtonContent}>
-          <Ionicons name="arrow-back" size={20} color="#345641" />
-          <Text style={styles.backButtonText}>Forrige</Text>
-          </View>
-        </TouchableOpacity>
-        </View>
-      )}
       </SafeAreaView>
 
       <ScrollView style={styles.scroll} contentContainerStyle={{ ...(noPadding ? styles.noPadding : styles.content), flexGrow: 1, paddingBottom: 40, }} keyboardShouldPersistTaps="handled">
@@ -48,19 +33,6 @@ const styles = StyleSheet.create({
     height: 60,
     paddingHorizontal: 16,
     backgroundColor: '#fff',
-  },
-  backButton: {
-    paddingVertical: 10,
-  },
-  backButtonContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  
-  backButtonText: {
-    fontSize: 16,
-    color: '#345641',
   },
   content: {
     padding: 32,
