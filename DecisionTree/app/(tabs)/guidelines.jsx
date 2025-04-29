@@ -8,6 +8,8 @@ import NextButton from '../../components/NextButton';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next'
 import ParallaxScrollView from '@/components/ParallaxScrollView';
+import Header from '@/components/Header';
+
 
 const GuidelinesScreen = () => {
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -31,9 +33,9 @@ const GuidelinesScreen = () => {
   const centerY = outerRadius + 10;
 
   return (
-    <ParallaxScrollView noPadding>
+    <ParallaxScrollView>
+      <Header />  
     <ThemedView style={styles.container}>
-  
       {/* Tittel */}
       <ThemedText style={styles.subtitle}>FØR GJENNOMFØRING</ThemedText>
       <ThemedText style={styles.title}>RETNINGSLINJER</ThemedText>
@@ -150,14 +152,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     padding: 20,
-  },
-  backButton: {
-    position: 'absolute',
-    top: 40,
-    left: 20,
-    fontSize: 16,
-    color: '#2E443E',
-    fontWeight: 'bold',
   },
   title: {
     color: '#2E443E',
