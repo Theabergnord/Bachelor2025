@@ -1,21 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Platform, StatusBar, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function ParallaxScrollView({ children, noPadding = false, hideBack = false }) {
-  const navigation = useNavigation();
-
   return (
     <ThemedView style={styles.root}>
       <SafeAreaView style={styles.safeArea}>
-        {!hideBack && (
-      <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.pop()} style={styles.backButton}>
-  <Text style={styles.backButtonText}>{'<'} Forrige</Text>
-</TouchableOpacity>
-      </View>
-      )}
       </SafeAreaView>
 
       <ScrollView style={styles.scroll} contentContainerStyle={{ ...(noPadding ? styles.noPadding : styles.content), flexGrow: 1, paddingBottom: 40, }} keyboardShouldPersistTaps="handled">
@@ -43,14 +33,6 @@ const styles = StyleSheet.create({
     height: 60,
     paddingHorizontal: 16,
     backgroundColor: '#fff',
-  },
-  backButton: {
-    paddingVertical: 10,
-    left: 16,
-  },
-  backButtonText: {
-    fontSize: 16,
-    color: '#345641',
   },
   content: {
     padding: 32,

@@ -39,6 +39,7 @@ export default function TabLayout() {
           ),
         }}
       />
+      
       <Tabs.Screen
         name="guidelines"
         options={{
@@ -46,6 +47,19 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "document-text" : "document-text-outline"}
+              size={28}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="decisionTreePage"
+        options={{
+          title: 'Tree',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "git-branch" : "git-branch-outline"}
               size={28}
               color={color}
             />
@@ -65,19 +79,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="decisionTreePage"
-        options={{
-          title: 'Tree',
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name={focused ? "ellipsis-horizontal" : "ellipsis-horizontal-outline"}
-              size={28}
-              color={color}
-            />
-          ),
-        }}
-      />
+      
     </Tabs>
   );
 }

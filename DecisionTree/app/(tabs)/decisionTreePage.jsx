@@ -9,6 +9,8 @@ import { useRouter } from 'expo-router';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback } from 'react';
 import TransitionMessage from '../../components/TransitionMessage';
+import Header from '../../components/Header';
+
 
 const DecisionTreePage = () => {
   const { t, i18n } = useTranslation()
@@ -17,6 +19,7 @@ const DecisionTreePage = () => {
   const [currentId, setCurrentId] = useState('q1')
   const [feedbackOption, setFeedbackOption] = useState(null)
   const [answers, setAnswers] = useState({})
+  const [history, setHistory] = useState([])
 
   const decisionTreeData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN
   const currentNode = decisionTreeData.find((node) => node.id === currentId)
@@ -61,6 +64,7 @@ const DecisionTreePage = () => {
       setCurrentId('q1')
       setFeedbackOption(null)
       setAnswers({})
+      setHistory([])
       router.setParams({ reset: undefined })
     }
   }, [reset]);
@@ -78,19 +82,20 @@ const DecisionTreePage = () => {
   }
 
   const handleAnswer = (answer) => {
-    const selectedOption = currentNode.options[answer ? 0 : 1]
-    const updatedAnswers = { ...answers, [currentNode.id]: selectedOption.label }
-    setAnswers(updatedAnswers)
-
+    const selectedOption = currentNode.options[answer ? 0 : 1];
+    const updatedAnswers = { ...answers, [currentNode.id]: selectedOption.label };
+    setAnswers(updatedAnswers);
+  
     if (selectedOption.feedbackType) {
       if (selectedOption.next) {
-        const nextNode = decisionTreeData.find(n => n.id === selectedOption.next)
+        const nextNode = decisionTreeData.find((n) => n.id === selectedOption.next);
         if (nextNode?.isTransition) {
-          setCurrentId(nextNode.id)
+          setCurrentId(nextNode.id);
           return;
         }
       }
-
+  
+      setHistory((prev) => [...prev, currentId]);
       setFeedbackOption({
         feedbackType: selectedOption.feedbackType,
         feedbackMessage: selectedOption.feedbackMessage,
@@ -98,13 +103,28 @@ const DecisionTreePage = () => {
         fromNode: currentNode.id,
       });
     } else if (selectedOption.next) {
+      setHistory((prev) => [...prev, currentId]);
       setCurrentId(selectedOption.next);
     } else {
-      const currentIndex = decisionTreeData.findIndex((n) => n.id === currentNode.id)
-      const nextVisible = getNextVisibleNode(currentIndex)
-      setCurrentId(nextVisible)
+      const currentIndex = decisionTreeData.findIndex((n) => n.id === currentNode.id);
+      const nextVisible = getNextVisibleNode(currentIndex);
+      setHistory((prev) => [...prev, currentId]);
+      setCurrentId(nextVisible);
     }
   };
+  
+
+  const handleGoBack = () => {
+    if (history.length > 0) {
+      const newHistory = [...history]
+      const previousId = newHistory.pop()
+      setHistory(newHistory)
+      setCurrentId(previousId)
+      setFeedbackOption(null)
+    } else {
+      router.back()
+    }
+  }
 
   if (feedbackOption) {
     const currentData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN
@@ -156,6 +176,7 @@ const DecisionTreePage = () => {
 
   return (
     <ParallaxScrollView>
+      <Header onBackPress={handleGoBack} />
       <Step
         stepNumber={stepNumber}
         totalSteps={8}
