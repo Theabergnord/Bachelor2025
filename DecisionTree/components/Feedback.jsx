@@ -54,9 +54,11 @@ export default function Feedback({ feedbackType = 'green', message = '', onNext 
               {title}
             </ThemedText>
 
+            <View style={styles.textWrapper}>
             <ThemedText type="default" style={styles.text}>
               {finalMessage}
             </ThemedText>
+            </View>
           </>
         )}
 
@@ -69,7 +71,7 @@ export default function Feedback({ feedbackType = 'green', message = '', onNext 
 const styles = StyleSheet.create({
   lineWrapper: {
     position: 'relative',
-    marginTop: 120,
+    marginTop: 50,
     marginBottom: 40,
   },
   curvedLine: {
@@ -101,10 +103,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 16,
   },
+  textWrapper: {
+    width: '100%',
+    maxWidth: '95%',
+    alignSelf: 'center',
+  },
   text: {
-    textAlign: 'center',
+    textAlign: 'left',
     marginBottom: 40,
-    fontSize: 18,
+    fontSize: 16,
   },
 })
 

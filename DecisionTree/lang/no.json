@@ -15,7 +15,8 @@
     "QUESTION": "Spørsmål",
     "YES": "Ja",
     "NO": "Nei",
-    "EXIT": "Avslutt"
+    "EXIT": "Avslutt",
+    "OF": "av"
     ,
     "FEEDBACK_TITLE": {
         "red": "Ikke gå videre!",

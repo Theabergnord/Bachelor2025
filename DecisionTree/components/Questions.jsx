@@ -2,24 +2,26 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import { ThemedText } from '@/components/ThemedText'; 
 import { ThemedView } from '@/components/ThemedView'; 
+import { useTranslation } from 'react-i18next';
 
-const Questions = ({ stepNumber, totalSteps, question, onAnswer }) => {
+const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer }) => {
+  const { t } = useTranslation()
   return (
     <ThemedView style={styles.container}>
-      <ThemedText style={styles.title}>Forberedende trinn</ThemedText>
-      <ThemedText style={styles.subtitle}>{stepNumber} av {totalSteps}</ThemedText>
+      <ThemedText style={styles.title}>{stepTitle}</ThemedText>
+      <ThemedText style={styles.subtitle}> {stepNumber} {t('OF')} {totalSteps}</ThemedText>
 
       <ThemedText style={styles.question}>{question}</ThemedText>
 
       <ThemedView style={styles.buttonContainer}>
         <TouchableOpacity style={styles.noButton} onPress={() => onAnswer(false)}>
-          <ThemedText style={styles.noButtonText}>Nei</ThemedText>
+          <ThemedText style={styles.noButtonText}>{t('NO')}</ThemedText>
         </TouchableOpacity>
 
         <View style={styles.separator} />
 
         <TouchableOpacity style={styles.yesButton} onPress={() => onAnswer(true)}>
-          <ThemedText style={styles.yesButtonText}>Ja</ThemedText>
+          <ThemedText style={styles.yesButtonText}>{t('YES')}</ThemedText>
         </TouchableOpacity>
       </ThemedView>
     </ThemedView>
@@ -30,11 +32,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    padding: 20,
+    padding: 0.2,
+    width: '100%',
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
+    textAlign: 'center',
+    maxWidth: '95%',
   },
   subtitle: {
     fontSize: 18,
@@ -52,7 +57,7 @@ const styles = StyleSheet.create({
     marginTop: 40, 
     alignItems: 'center',
     position: 'absolute',
-    bottom: 150,
+    bottom: 60,
   },
   noButton: {
     backgroundColor: '#fff',

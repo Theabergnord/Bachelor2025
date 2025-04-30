@@ -15,7 +15,8 @@
     "QUESTION": "Question",
     "YES": "Yes",
     "NO": "No",
-    "EXIT": "Exit"
+    "EXIT": "Exit",
+    "OF": "of"
     ,
     "FEEDBACK_TITLE": {
         "red": "Do not proceed!",

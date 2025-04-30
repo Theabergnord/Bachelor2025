@@ -21,6 +21,41 @@ const DecisionTreePage = () => {
   const decisionTreeData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN
   const currentNode = decisionTreeData.find((node) => node.id === currentId)
 
+  const stepTitles = {
+    1: {
+      no: 'Forberedende steg for vurdering av BC',
+      en: 'Preparatory steps for consideration for BC assessment'
+    },
+    2: {
+      no: 'Oppstart av vurdering av BC: I forberedelsen og før vurderingen gjennomføres',
+      en: 'Initiation for BC assessment: In preparation for the assessment and prior to the BC assessment taking place',
+    },
+    3: {
+      no: 'Valg av metode',
+      en: 'Method Choice',
+    },
+    4: {
+      no: 'Datainnsamling',
+      en: 'Data collection',
+    },
+    5: {
+      no: 'Tolkning av data',
+      en: 'Data interpretation',
+    },
+    6: {
+      no: 'Rapportering av data',
+      en: 'Data Reporting',
+    },
+    7: {
+      no: 'Formidling og kommunikasjon av data',
+      en: 'Data dissemination and communication',
+    },
+    8: {
+      no: 'Monitoring',
+      en: 'Monitoring',
+    },
+  }
+
   useEffect(() => {
     if (reset === 'true') {
       setCurrentId('q1')
@@ -29,18 +64,6 @@ const DecisionTreePage = () => {
       router.setParams({ reset: undefined })
     }
   }, [reset]);
-
-  const stepMap = [
-    {
-      ids: ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'],
-      title: i18n.language === 'no' ? 'Forberedende steg for vurdering av BC: Før BC-vurderingen utføres' : 'Preparatory Steps for consideration for BC assessment: Before any BC assessment is arranged',
-      totalQuestions: 10,
-    },
-    //Legge til flere steg etterhvert
-  ]
-
-  const currentStep = stepMap.find(step => step.ids.includes(currentId)) || {};
-  const currentQuestion = currentStep.ids?.indexOf(currentId) + 1 || 1;
 
   const getNextVisibleNode = (fromIndex = -1) => {
     for (let i = fromIndex + 1; i < decisionTreeData.length; i++) {
@@ -126,12 +149,17 @@ const DecisionTreePage = () => {
       </ParallaxScrollView>
     )
   }
+  
+  const stepNumber = currentNode.step || 1
+  const lang = i18n.language === 'no' ? 'no' : 'en'
+  const stepTitle = stepTitles[stepNumber]?.[lang] ?? ''
 
   return (
     <ParallaxScrollView>
       <Step
-        stepNumber={1} // Midlertidig, regn steg ut fra posisjon i treet
-        totalSteps={1}
+        stepNumber={stepNumber}
+        totalSteps={8}
+        stepTitle={stepTitle}
         question={currentNode.question}
         onAnswer={handleAnswer}
       />
