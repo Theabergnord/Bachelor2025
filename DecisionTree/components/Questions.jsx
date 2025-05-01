@@ -3,10 +3,12 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import { ThemedText } from '@/components/ThemedText'; 
 import { ThemedView } from '@/components/ThemedView'; 
 import { useTranslation } from 'react-i18next';
+import ProgressBar from './ProgressBar';
 
-const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer }) => {
+const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer, progress }) => {
   const { t } = useTranslation()
   return (
+    <>
     <ThemedView style={styles.container}>
       <ThemedText style={styles.title}>{stepTitle}</ThemedText>
       <ThemedText style={styles.subtitle}> {stepNumber} {t('OF')} {totalSteps}</ThemedText>
@@ -24,7 +26,10 @@ const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer }) =>
           <ThemedText style={styles.yesButtonText}>{t('YES')}</ThemedText>
         </TouchableOpacity>
       </ThemedView>
+
     </ThemedView>
+    <ProgressBar progress={progress} />
+    </>
   );
 };
 

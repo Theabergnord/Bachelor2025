@@ -1,14 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+
+const { height } = Dimensions.get('window');
 
 const ProgressBar = ({ progress }) => {
-  const clamped = Math.min(Math.max(progress, 0), 100);
+  const clampedProgress = Math.min(Math.max(progress, 0), 100);
 
   return (
     <View style={styles.container}>
       <View style={styles.barBackground}>
-        <View style={[styles.barFill, { width: `${clamped}%` }]} />
-        <Text style={styles.progressText}>{clamped}%</Text>
+        <View style={[styles.barFill, { width: `${clampedProgress}%` }]} />
+        <Text style={styles.progressText}>{clampedProgress}%</Text>
       </View>
     </View>
   );
@@ -16,8 +18,8 @@ const ProgressBar = ({ progress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
-    marginBottom: 40,
+    marginTop: height * -0.02,    
+    marginBottom: height * 0.12,    
     paddingHorizontal: 20,
   },
   barBackground: {

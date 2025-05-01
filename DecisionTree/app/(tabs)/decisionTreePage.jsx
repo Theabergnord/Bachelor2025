@@ -179,10 +179,7 @@ const DecisionTreePage = () => {
 
   const extractNumber = (id) => parseInt(id.replace('q', ''), 10)
   const currentIndex = extractNumber(currentId)
-  const maxIndex = Math.max(...decisionTreeData.map((n) => extractNumber(n.id)))
-
   const overallProgress = Math.round((currentIndex / 37) * 100)
-  console.log(overallProgress)
 
   return (
     <ParallaxScrollView>
@@ -195,8 +192,9 @@ const DecisionTreePage = () => {
         stepTitle={stepTitle}
         question={currentNode.question}
         onAnswer={handleAnswer}
+        progress={overallProgress}
       />
-      <ProgressBar progress={overallProgress} />
+      
 
     </ParallaxScrollView>
   );
