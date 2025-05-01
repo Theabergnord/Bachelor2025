@@ -10,6 +10,8 @@ import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback } from 'react';
 import TransitionMessage from '../../components/TransitionMessage';
 import Header from '../../components/Header';
+import ProgressBar from '../../components/ProgressBar'; 
+
 
 
 const DecisionTreePage = () => {
@@ -174,9 +176,19 @@ const DecisionTreePage = () => {
   const lang = i18n.language === 'no' ? 'no' : 'en'
   const stepTitle = stepTitles[stepNumber]?.[lang] ?? ''
 
+
+  const extractNumber = (id) => parseInt(id.replace('q', ''), 10)
+  const currentIndex = extractNumber(currentId)
+  const maxIndex = Math.max(...decisionTreeData.map((n) => extractNumber(n.id)))
+
+  const overallProgress = Math.round((currentIndex / 37) * 100)
+  console.log(overallProgress)
+
   return (
     <ParallaxScrollView>
       <Header onBackPress={handleGoBack} />
+
+ 
       <Step
         stepNumber={stepNumber}
         totalSteps={8}
@@ -184,6 +196,8 @@ const DecisionTreePage = () => {
         question={currentNode.question}
         onAnswer={handleAnswer}
       />
+      <ProgressBar progress={overallProgress} />
+
     </ParallaxScrollView>
   );
 };
