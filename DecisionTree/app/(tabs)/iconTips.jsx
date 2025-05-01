@@ -45,12 +45,17 @@ export default function ProgressTips() {
           {/* Ikonrad */}
           <View style={styles.iconRow}>
             <Image
-              source={require('@/assets/images/warning_red.png')} // Grønt ikon
+              source={require('@/assets/images/warning_green.png')} // Grønt ikon
               style={styles.icon}
               resizeMode="contain"
             />
             <Image
               source={require('@/assets/images/warning_yellow.png')} // Gult ikon
+              style={styles.icon}
+              resizeMode="contain"
+            />
+            <Image
+              source={require('@/assets/images/warning_red.png')} // Rødt ikon
               style={styles.icon}
               resizeMode="contain"
             />
@@ -65,7 +70,8 @@ export default function ProgressTips() {
           </View>
 
           {/* Neste-knapp */}
-          <NextButton onPress={handleNext} text="Neste" style={styles.nextButton} />
+          <NextButton style={styles.startButton}
+  onPress={() => router.push({ pathname: '/decisionTreePage', params: { reset: 'true' } })} />
         </ThemedView>
       </SafeAreaView>
     </>
