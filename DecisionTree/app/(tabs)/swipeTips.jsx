@@ -7,6 +7,7 @@ import { ThemedText } from '@/components/ThemedText';
 import TipsBox from '@/components/TipsBox';
 import NextButton from '@/components/NextButton';
 import Header from '@/components/Header';
+
 export default function SwipeTips() {
   const router = useRouter();
 

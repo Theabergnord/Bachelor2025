@@ -79,6 +79,20 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen 
+    name="swipeTips" 
+    options={{ 
+      href: null,  // Vises ikke i tab-baren
+      headerShown: false // Fjerner header på toppen
+    }}
+  />
+  <Tabs.Screen 
+    name="iconTips" 
+    options={{ 
+      href: null,  // Vises ikke i tab-baren
+      headerShown: false // Fjerner header på toppen
+    }} 
+  />
       
     </Tabs>
   );

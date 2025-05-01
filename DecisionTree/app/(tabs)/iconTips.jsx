@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: BG,
     paddingHorizontal: 20,
-    paddingTop: 12,
+    paddingTop: 0,
   },
   pageTitle: {
     fontSize: 18,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 24,
+    marginTop: 7,
     marginBottom: 16,
     gap: 28,
   },
