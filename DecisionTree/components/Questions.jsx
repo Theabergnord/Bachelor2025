@@ -15,7 +15,7 @@ const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer, prog
   const { t } = useTranslation()
   const insets = useSafeAreaInsets()
 
-  const buttonBottom = insets.bottom + progressBarBottom + progressBarHeight + height * 0.02;
+  const buttonBottom = insets.bottom + progressBarBottom + progressBarHeight + height * 0.02 - 30;
 
   return (
     <>
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: 'Poppins_600SemiBold',
     textAlign: 'center',
     maxWidth: '95%',
   },
@@ -60,10 +60,10 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   question: {
-    fontSize: 18,
+    fontSize: 16,
     marginVertical: 16,
     textAlign: 'center',
-    marginTop: 30,
+    marginTop: 10,
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -75,8 +75,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: '#345641',
     borderWidth: 2,
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
@@ -85,8 +85,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#345641',
     borderColor: '#345641',
     borderWidth: 2,
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
@@ -94,14 +94,14 @@ const styles = StyleSheet.create({
   noButtonText: {
     color: '#345641',
     fontSize: 20,
-    fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'Poppins_400Regular',
   },
   yesButtonText: {
     color: '#fff',
     fontSize: 20,
-    fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'Poppins_400Regular',
   },
   separator: {
     width: 2,

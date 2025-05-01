@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     right: 20,
     height: progressBarHeight,
     alignItems: 'center',
+    marginBottom: 3,
   },
   barBackground: {
     flex: 1,
