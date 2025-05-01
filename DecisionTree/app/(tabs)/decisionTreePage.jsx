@@ -159,6 +159,21 @@ const DecisionTreePage = () => {
     )
   }
 
+
+  //progress
+  const extractNumber = (id) => {
+    const match = typeof id === 'string' ? id.match(/\d+/) : null;
+    return match ? parseInt(match[0], 10) : 0;
+  };
+
+  const referenceId = currentNode?.isTransition
+  ? history[history.length - 1] // forrige spørsmål
+  : currentId;
+
+  const currentIndex = extractNumber(referenceId || 'q1');
+  const overallProgress = Math.round((currentIndex / 37) * 100);
+
+
   if (!currentNode) return null
 
   if (currentNode?.isTransition) {
@@ -168,6 +183,7 @@ const DecisionTreePage = () => {
           message={currentNode.message}
           onNext={() => setCurrentId(currentNode.next)}
         />
+        <ProgressBar progress={overallProgress}/>
       </ParallaxScrollView>
     )
   }
@@ -176,10 +192,6 @@ const DecisionTreePage = () => {
   const lang = i18n.language === 'no' ? 'no' : 'en'
   const stepTitle = stepTitles[stepNumber]?.[lang] ?? ''
 
-
-  const extractNumber = (id) => parseInt(id.replace('q', ''), 10)
-  const currentIndex = extractNumber(currentId)
-  const overallProgress = Math.round((currentIndex / 37) * 100)
 
   return (
     <ParallaxScrollView>
