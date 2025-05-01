@@ -30,8 +30,8 @@ const DecisionTreePage = () => {
       en: 'Preparatory steps for consideration for BC assessment'
     },
     2: {
-      no: 'Oppstart av vurdering av BC: I forberedelsen og før vurderingen gjennomføres',
-      en: 'Initiation for BC assessment: In preparation for the assessment and prior to the BC assessment taking place',
+      no: 'Oppstart av vurdering av BC',
+      en: 'Initiation for BC assessment',
     },
     3: {
       no: 'Valg av metode',
