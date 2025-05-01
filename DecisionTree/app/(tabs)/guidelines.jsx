@@ -37,8 +37,8 @@ const GuidelinesScreen = () => {
       <Header />  
     <ThemedView style={styles.container}>
       {/* Tittel */}
-      <ThemedText style={styles.subtitle}>FØR GJENNOMFØRING</ThemedText>
-      <ThemedText style={styles.title}>RETNINGSLINJER</ThemedText>
+      {/* Usikker på om skal med!   <ThemedText style={styles.subtitle}>{t('TITLE_GUIDELINES')}</ThemedText> */}
+      <ThemedText style={styles.title}>{t('GUIDELINES_TITLE')}</ThemedText>
 
       {/* Tips-boksen */}
       <TipsBox subtitle="Klikk på tallene for å lese retningslinjene" />
@@ -127,7 +127,7 @@ const GuidelinesScreen = () => {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
-            <ThemedText style={styles.modalTitle}>Retningslinje {selectedNumber}</ThemedText>
+            <ThemedText style={styles.modalTitle}>{t('GUIDELINE_CIRCLE')} {selectedNumber}</ThemedText>
             <ThemedText style={styles.modalBody}>
               Dette er informasjonen om retningslinje {selectedNumber}.
             </ThemedText>
@@ -158,8 +158,8 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginBottom: 20,
     textAlign: 'center',
-    fontWeight: 'bold',
-    fontFamily: Platform.OS === 'ios' ? 'Rubik-Bold' : 'Rubik',
+    fontSize: 20,
+    fontFamily: 'Poppins_600SemiBold',
   },
   subtitle: {
     color: '#2E443E',
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   },
   numberText: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins_600SemiBold',
     color: '#2E443E',
   },
   modalOverlay: {
@@ -209,7 +209,8 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: 'Poppins_600SemiBold',
     color: '#2E443E',
     marginBottom: 15,
   },
@@ -227,7 +228,8 @@ const styles = StyleSheet.create({
   },
   closeButtonText: {
     color: 'white',
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: 'Poppins_600SemiBold',
     fontSize: 16,
   },
 });

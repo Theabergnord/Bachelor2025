@@ -71,7 +71,7 @@ export default function Feedback({ feedbackType = 'green', message = '', onNext 
 const styles = StyleSheet.create({
   lineWrapper: {
     position: 'relative',
-    marginTop: 50,
+    marginTop: 60,
     marginBottom: 40,
   },
   curvedLine: {
