@@ -115,7 +115,7 @@ const GuidelinesScreen = () => {
 </View>
 
 
-<NextButton onPress={handleNext} text={t('NEXT')} style={{ marginBottom: 32 }} />
+<NextButton onPress={handleNext} text={('NEXT')} style={{ marginBottom: 32 }} />
   
 
       {/* Modal for å vise informasjon */}
