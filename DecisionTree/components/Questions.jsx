@@ -7,6 +7,9 @@ import { Dimensions } from 'react-native';
 import ProgressBar from './ProgressBar';
 
 const { height } = Dimensions.get('window')
+const progressBarHeight = 30;
+const progressBarBottom = height * 0.05;
+const buttonBottom = progressBarBottom + progressBarHeight + height * 0.02;
 
 const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer, progress }) => {
   const { t } = useTranslation()
@@ -61,11 +64,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    gap: 40, 
-    marginTop: 40, 
+    gap: 40,
     alignItems: 'center',
     position: 'absolute',
-    bottom: height * 0.1,
+    bottom: buttonBottom,
   },
   noButton: {
     backgroundColor: '#fff',
