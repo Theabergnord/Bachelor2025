@@ -3,6 +3,9 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import { ThemedText } from '@/components/ThemedText'; 
 import { ThemedView } from '@/components/ThemedView'; 
 import { useTranslation } from 'react-i18next';
+import { Dimensions } from 'react-native';
+
+const { height } = Dimensions.get('window')
 
 const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer }) => {
   const { t } = useTranslation()
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
     marginTop: 40, 
     alignItems: 'center',
     position: 'absolute',
-    bottom: 60,
+    bottom: height * 0.1,
   },
   noButton: {
     backgroundColor: '#fff',
