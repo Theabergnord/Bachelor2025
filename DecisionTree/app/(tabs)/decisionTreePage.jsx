@@ -10,6 +10,8 @@ import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback } from 'react';
 import TransitionMessage from '../../components/TransitionMessage';
 import Header from '../../components/Header';
+import ProgressBar from '../../components/ProgressBar'; 
+
 
 
 const DecisionTreePage = () => {
@@ -157,6 +159,21 @@ const DecisionTreePage = () => {
     )
   }
 
+
+  //progress
+  const extractNumber = (id) => {
+    const match = typeof id === 'string' ? id.match(/\d+/) : null;
+    return match ? parseInt(match[0], 10) : 0;
+  };
+
+  const referenceId = currentNode?.isTransition
+  ? history[history.length - 1] // forrige spørsmål
+  : currentId;
+
+  const currentIndex = extractNumber(referenceId || 'q1');
+  const overallProgress = Math.round((currentIndex / 37) * 100);
+
+
   if (!currentNode) return null
 
   if (currentNode?.isTransition) {
@@ -166,6 +183,7 @@ const DecisionTreePage = () => {
           message={currentNode.message}
           onNext={() => setCurrentId(currentNode.next)}
         />
+        <ProgressBar progress={overallProgress}/>
       </ParallaxScrollView>
     )
   }
@@ -174,16 +192,22 @@ const DecisionTreePage = () => {
   const lang = i18n.language === 'no' ? 'no' : 'en'
   const stepTitle = stepTitles[stepNumber]?.[lang] ?? ''
 
+
   return (
     <ParallaxScrollView>
       <Header onBackPress={handleGoBack} />
+
+ 
       <Step
         stepNumber={stepNumber}
         totalSteps={8}
         stepTitle={stepTitle}
         question={currentNode.question}
         onAnswer={handleAnswer}
+        progress={overallProgress}
       />
+      
+
     </ParallaxScrollView>
   );
 };
