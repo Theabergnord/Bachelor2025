@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#2E443E',
     marginTop: 0,
-    marginBottom: 0, // mindre luft under tittel
+    marginBottom: 0, 
     textAlign: 'center',
     fontWeight: 'bold',
     fontFamily: Platform.OS === 'ios' ? 'Rubik-Bold' : 'Rubik',
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   },
   guidelineListContainer: {
     width: '100%',
-    marginTop: 8, // mindre luft over listen
+    marginTop: 8,
     marginBottom: 16,
     borderRadius: 10,
     backgroundColor: '#F5F5F5',
@@ -214,7 +214,6 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 15,
-    // backgroundColor settes dynamisk!
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,

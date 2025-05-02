@@ -18,7 +18,7 @@ export default function SwipeTips() {
   const handleNext = async () => {
     try {
       await AsyncStorage.setItem('hasSeenSwipeTips', 'true');
-      router.push('/iconTips'); // Eller annen ønsket rute
+      router.push('/iconTips');
     } catch (error) {
       console.error('Feil ved lagring av instruksjonsstatus:', error);
       router.push('/(tabs)/decisionTreePage');
@@ -27,7 +27,6 @@ export default function SwipeTips() {
 
   return (
     <>
-      {/* Dette fjerner den native headeren */}
       <Stack.Screen options={{ headerShown: false }} />
 
       <SafeAreaView style={styles.safeArea}>
@@ -47,7 +46,7 @@ export default function SwipeTips() {
             resizeMode="contain"
           />
 
-          {/* Ja/Nei knapper med nøyaktig samme stil som i Questions-komponenten */}
+          {/* Ja/Nei knapper*/}
           <ThemedView style={styles.buttonContainer}>
             <TouchableOpacity style={styles.noButton} activeOpacity={1}>
               <ThemedText style={styles.noButtonText}>Nei</ThemedText>

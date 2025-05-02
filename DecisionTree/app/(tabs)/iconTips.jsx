@@ -20,7 +20,7 @@ export default function ProgressTips() {
 
   return (
     <>
-      {/* Dette fjerner den native headeren */}
+      
       <Stack.Screen options={{ headerShown: false }} />
 
       <SafeAreaView style={styles.safeArea}>
@@ -42,7 +42,7 @@ export default function ProgressTips() {
             }
           />
 
-          {/* Ikonrad */}
+          {/* Ikoner */}
           <View style={styles.iconRow}>
             <Image
               source={require('@/assets/images/warning_green.png')} // Grønt ikon
@@ -61,7 +61,7 @@ export default function ProgressTips() {
             />
           </View>
 
-          {/* Fremdriftsindikator */}
+          {/* progress bar enn så lenge */}
           <View style={styles.progressBarContainer}>
             <View style={styles.progressBarBackground}>
               <View style={styles.progressBarFill} />
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     top: 0,
-    width: '50%', // 50% fremdrift
+    width: '50%',
     height: '100%',
     backgroundColor: PROGRESS,
     borderTopLeftRadius: 17,
