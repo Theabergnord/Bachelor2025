@@ -43,8 +43,11 @@ const GuidelinesScreen = () => {
 
   return (
     <ParallaxScrollView>
-      <ThemedView style={styles.container}>
-        <ThemedText style={styles.title}>RETNINGSLINJER</ThemedText>
+      <Header />  
+    <ThemedView style={styles.container}>
+      {/* Tittel */}
+      {/* Usikker på om skal med!   <ThemedText style={styles.subtitle}>{t('TITLE_GUIDELINES')}</ThemedText> */}
+      <ThemedText style={styles.title}>{t('GUIDELINES_TITLE')}</ThemedText>
 
         <View style={styles.guidelineTable}>
   {Array.from({ length: 4 }, (_, i) => (
@@ -128,30 +131,33 @@ const GuidelinesScreen = () => {
           })}
         </View>
 
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => setModalVisible(false)}
-        >
-          <View style={styles.modalOverlay}>
-            <View style={styles.modalContent}>
-              <ThemedText style={styles.modalTitle}>
-                {selectedNumber && guidelines[selectedNumber - 1]?.title}
-              </ThemedText>
-              <ThemedText style={styles.modalBody}>
-                Dette er informasjonen om retningslinje {selectedNumber}.
-              </ThemedText>
-              <TouchableOpacity
-                onPress={() => setModalVisible(false)}
-                style={styles.closeButton}
-              >
-                <ThemedText style={styles.closeButtonText}>Lukk</ThemedText>
-              </TouchableOpacity>
-            </View>
+
+<NextButton onPress={handleNext} text={t('NEXT')} style={{ marginBottom: 32 }} />
+  
+
+      {/* Modal for å vise informasjon */}
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <ThemedText style={styles.modalTitle}>{t('GUIDELINE_CIRCLE')} {selectedNumber}</ThemedText>
+            <ThemedText style={styles.modalBody}>
+              Dette er informasjonen om retningslinje {selectedNumber}.
+            </ThemedText>
+            <TouchableOpacity
+              onPress={() => setModalVisible(false)}
+              style={styles.closeButton}
+            >
+              <ThemedText style={styles.closeButtonText}>Lukk</ThemedText>
+            </TouchableOpacity>
           </View>
-        </Modal>
-      </ThemedView>
+        </View>
+      </Modal>
+    </ThemedView>
     </ParallaxScrollView>
   );
 };
@@ -169,8 +175,8 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginBottom: 10,
     textAlign: 'center',
-    fontWeight: 'bold',
-    fontFamily: Platform.OS === 'ios' ? 'Rubik-Bold' : 'Rubik',
+    fontSize: 20,
+    fontFamily: 'Poppins_600SemiBold',
   },
   subtitle: {
     paddingTop: 40,
@@ -252,7 +258,7 @@ const styles = StyleSheet.create({
   },
   numberText: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins_600SemiBold',
     color: '#2E443E',
   },
   modalOverlay: {
@@ -271,7 +277,8 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: 'Poppins_600SemiBold',
     color: '#2E443E',
     marginBottom: 15,
   },
@@ -289,7 +296,8 @@ const styles = StyleSheet.create({
   },
   closeButtonText: {
     color: 'white',
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: 'Poppins_600SemiBold',
     fontSize: 16,
   },
 });

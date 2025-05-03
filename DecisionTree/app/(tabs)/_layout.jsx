@@ -6,9 +6,11 @@ import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { t } = useTranslation();
 
   return (
     <Tabs
@@ -29,7 +31,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Hjem',
+          title: t('HOME'),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "home" : "home-outline"}
@@ -43,7 +45,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="guidelines"
         options={{
-          title: 'Retningslinjer',
+          title: t('GUIDELINES'),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "document-text" : "document-text-outline"}
@@ -56,7 +58,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="decisionTreePage"
         options={{
-          title: 'Tree',
+          title: t('TREE'),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "git-branch" : "git-branch-outline"}
@@ -69,7 +71,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="more"
         options={{
-          title: 'Mer',
+          title: t('MORE'),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "ellipsis-horizontal" : "ellipsis-horizontal-outline"}

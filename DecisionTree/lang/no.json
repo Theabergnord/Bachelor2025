@@ -16,7 +16,14 @@
     "YES": "Ja",
     "NO": "Nei",
     "EXIT": "Avslutt",
-    "OF": "av"
+    "OF": "av",
+    "HOME": "Hjem",
+    "GUIDELINES": "Retningslinjer",
+    "TREE": "Tre",
+    "MORE": "Mer",
+    "TITLE_GUIDELINES": "Før du starter",
+    "GUIDELINES_TITLE": "RETNINGSLINJER",
+    "GUIDELINE_CIRCLE": "Retningslinje"
     ,
     "FEEDBACK_TITLE": {
         "red": "Ikke gå videre!",

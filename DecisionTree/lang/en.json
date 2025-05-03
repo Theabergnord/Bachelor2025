@@ -16,7 +16,14 @@
     "YES": "Yes",
     "NO": "No",
     "EXIT": "Exit",
-    "OF": "of"
+    "OF": "of",
+    "HOME": "Home",
+    "GUIDELINES": "Guidelines",
+    "TREE": "Tree",
+    "MORE": "More",
+    "TITLE_GUIDELINES": "Before you start",
+    "GUIDELINES_TITLE": "GUIDELINES",
+    "GUIDELINE_CIRCLE": "Guideline"
     ,
     "FEEDBACK_TITLE": {
         "red": "Do not proceed!",
