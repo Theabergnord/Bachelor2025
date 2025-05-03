@@ -8,7 +8,6 @@ import TipsBox from '@/components/TipsBox';
 import NextButton from '@/components/NextButton';
 import Header from '@/components/Header';
 import { useTranslation } from 'react-i18next';
-import { BottomTabBar } from '@react-navigation/bottom-tabs';
 
 
 export default function SwipeTips() {
@@ -38,6 +37,7 @@ export default function SwipeTips() {
             subtitle="Swipe til venstre for nei og til høyre for ja for å besvare spørsmålene mer effektivt!"
           />
 
+          {/*Swipe-hånd gif*/}
           <Image
             source={require('@/assets/images/swipe-left.gif')}
             style={styles.handImage}
@@ -72,20 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: BG,
     paddingTop: 70
   },
-  headerRow: {
-    width: '100%',
-    paddingTop: 8,
-    paddingLeft: 12,
-    marginBottom: 4,
-  },
-  backBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  backText: {
-    color: PRIMARY,
-    fontSize: 18,
-  },
+  
   container: {
     flex: 1,
     paddingHorizontal: 22,
@@ -156,9 +143,4 @@ const styles = StyleSheet.create({
     borderRadius: 1,
     alignSelf: 'center'
   },
-  nextButton: {
-    paddingTop: 150,
-    
-  },
-
 });

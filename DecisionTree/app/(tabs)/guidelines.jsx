@@ -160,6 +160,7 @@ const GuidelinesScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  //Må rydde opp litt i stylinga her, skal gjøre senere
   container: {
     flex: 1,
     alignItems: 'center',
@@ -173,7 +174,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: 'center',
     fontSize: 20,
-    fontFamily: 'Poppins_600SemiBold',
   },
   subtitle: {
     paddingTop: 40,

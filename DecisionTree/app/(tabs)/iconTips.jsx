@@ -6,6 +6,7 @@ import { ThemedText } from '@/components/ThemedText';
 import TipsBox from '@/components/TipsBox';
 import NextButton from '@/components/NextButton';
 import Header from '@/components/Header';
+import ProgressBar from '../../components/ProgressBar';
 
 export default function ProgressTips() {
   const router = useRouter();
@@ -60,16 +61,11 @@ export default function ProgressTips() {
             />
           </View>
 
-          {/* progress bar enn så lenge */}
-          <View style={styles.progressBarContainer}>
-            <View style={styles.progressBarBackground}>
-              <View style={styles.progressBarFill} />
-              <ThemedText style={styles.progressBarText}>50%</ThemedText>
-            </View>
-          </View>
+          {/*ProgressBar*/}
+          <ProgressBar progress={0} bottomInset={0} />
 
           {/* Neste-knapp */}
-          <NextButton style={styles.startButton}
+          <NextButton 
   onPress={() => router.push({ pathname: '/decisionTreePage', params: { reset: 'true' } })} />
         </ThemedView>
       
@@ -111,40 +107,5 @@ const styles = StyleSheet.create({
   icon: {
     width: 80,
     height: 80,
-  },
-  progressBarContainer: {
-    width: '100%',
-    alignItems: 'center',
-    marginBottom: 24,
-  },
-  progressBarBackground: {
-    width: '80%',
-    height: 34,
-    borderRadius: 17,
-    borderWidth: 2,
-    borderColor: PRIMARY,
-    backgroundColor: BG,
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'hidden',
-    flexDirection: 'row',
-  },
-  progressBarFill: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    width: '50%',
-    height: '100%',
-    backgroundColor: PROGRESS,
-    borderTopLeftRadius: 17,
-    borderBottomLeftRadius: 17,
-  },
-  progressBarText: {
-    fontSize: 18,
-    color: PRIMARY,
-    fontWeight: '500',
-    zIndex: 1,
-    width: '100%',
-    textAlign: 'center',
   },
 });
