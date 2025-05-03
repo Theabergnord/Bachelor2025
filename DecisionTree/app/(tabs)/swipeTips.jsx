@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 40,
     marginTop: 20,
-    marginBottom: 65,
+    marginBottom: 22,
     alignSelf: 'center',
   },
   
