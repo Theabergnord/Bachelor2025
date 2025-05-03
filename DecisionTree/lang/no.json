@@ -21,9 +21,20 @@
     "GUIDELINES": "Retningslinjer",
     "TREE": "Tre",
     "MORE": "Mer",
+    "CLOSE": "Lukk",
+
     "TITLE_GUIDELINES": "Før du starter",
     "GUIDELINES_TITLE": "RETNINGSLINJER",
-    "GUIDELINE_CIRCLE": "Retningslinje"
+    "GUIDELINE_CIRCLE": "Retningslinje",
+    "GUIDELINE_CLICK": "Klikk på tallene for å lese retningslinjene",
+    "G1": "Forberedelse",
+    "G2": "Oppstart av vurdering",
+    "G3": "Valg av methode",
+    "G4": "Data innsamling",
+    "G5": "Tolkning av data",
+    "G6": "Rapportering av data",
+    "G7": "Formidling av data",
+    "G8": "Monitorering"
     ,
     "FEEDBACK_TITLE": {
         "red": "Ikke gå videre!",

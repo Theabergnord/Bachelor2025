@@ -17,14 +17,14 @@ const GuidelinesScreen = () => {
   const { t } = useTranslation();
 
   const guidelines = [
-    { number: 1, title: "Forberedelse" },
-    { number: 2, title: "Oppstart av vurdering" },
-    { number: 3, title: "Valg av metode" },
-    { number: 4, title: "Datainnsamling" },
-    { number: 5, title: "Tolkning av data" },
-    { number: 6, title: "Rapportering av data" },
-    { number: 7, title: "Formidling av data" },
-    { number: 8, title: "Monitoring" },
+    { number: 1, titleKey: 'G1' },
+    { number: 2, titleKey: 'G2' },
+    { number: 3, titleKey: 'G3' },
+    { number: 4, titleKey: 'G4' },
+    { number: 5, titleKey: 'G5' },
+    { number: 6, titleKey: 'G6' },
+    { number: 7, titleKey: 'G7' },
+    { number: 8, titleKey: 'G8' },
   ];
 
   const handleNumberPress = (number) => {
@@ -69,7 +69,7 @@ const GuidelinesScreen = () => {
             <View style={[styles.guidelineNumberCircle, { backgroundColor: fillColor }]}>
               <ThemedText style={styles.guidelineNumberText}>{guideline.number}</ThemedText>
             </View>
-            <ThemedText style={styles.guidelineTitle}>{guideline.title}</ThemedText>
+            <ThemedText style={styles.guidelineTitle}>{t(guideline.titleKey)}</ThemedText>
           </TouchableOpacity>
         );
       })}
@@ -77,7 +77,7 @@ const GuidelinesScreen = () => {
   ))}
 </View>
 
-<ThemedText style={styles.subtitle}>Klikk på tallene for å lese mer om retningslinjene</ThemedText>
+<ThemedText style={styles.subtitle}>{t('GUIDELINE_CLICK')}</ThemedText>
         <View style={styles.circleContainer}>
           <Svg width={(outerRadius * 2) + 20} height={(outerRadius * 2) + 20}>
             {numbers.map((_, index) => {
@@ -149,7 +149,7 @@ const GuidelinesScreen = () => {
               onPress={() => setModalVisible(false)}
               style={styles.closeButton}
             >
-              <ThemedText style={styles.closeButtonText}>Lukk</ThemedText>
+              <ThemedText style={styles.closeButtonText}>{t('CLOSE')}</ThemedText>
             </TouchableOpacity>
           </View>
         </View>
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 0,
-    paddingVertical: 30
+    paddingVertical: 0,
   },
   title: {
     color: '#2E443E',
@@ -176,8 +176,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   subtitle: {
-    paddingTop: 40,
-    paddingBottom: 0
+    paddingTop: 10,
+    paddingBottom: 0,
+    textAlign: 'center',
+    fontSize: 16,
   },
   guidelineListRow: {
     flexDirection: 'row',
@@ -228,9 +230,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 9,
+    paddingVertical: 2,
     paddingHorizontal: 5,
-    gap: 8,
+    gap: 5,
   },
   
   circleContainer: {

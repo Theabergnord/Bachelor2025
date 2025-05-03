@@ -21,9 +21,20 @@
     "GUIDELINES": "Guidelines",
     "TREE": "Tree",
     "MORE": "More",
+    "CLOSE": "Close",
+
     "TITLE_GUIDELINES": "Before you start",
     "GUIDELINES_TITLE": "GUIDELINES",
-    "GUIDELINE_CIRCLE": "Guideline"
+    "GUIDELINE_CIRCLE": "Guideline",
+    "GUIDELINE_CLICK": "Click the numbers to read the guidelines",
+    "G1": "Preparation",
+    "G2": "Initiation",
+    "G3": "Method choice",
+    "G4": "Data collection",
+    "G5": "Data interpretation",
+    "G6": "Data reporting",
+    "G7": "Data dissemination",
+    "G8": "Monitoring"
     ,
     "FEEDBACK_TITLE": {
         "red": "Do not proceed!",

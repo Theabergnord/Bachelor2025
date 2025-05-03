@@ -8,7 +8,7 @@ import TipsBox from '@/components/TipsBox';
 import NextButton from '@/components/NextButton';
 import Header from '@/components/Header';
 import { useTranslation } from 'react-i18next';
-
+import SwipeAnimation from '@/components/SwipeAnimation';
 
 export default function SwipeTips() {
   const router = useRouter();
@@ -38,11 +38,8 @@ export default function SwipeTips() {
           />
 
           {/*Swipe-hånd gif*/}
-          <Image
-            source={require('@/assets/images/swipe-left.gif')}
-            style={styles.handImage}
-            resizeMode="contain"
-          />
+          <SwipeAnimation />
+
 
           {/* Ja/Nei knapper*/}
           <ThemedView style={styles.buttonContainer}>
@@ -78,7 +75,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 22,
     alignItems: 'flex-start',
     backgroundColor: BG,
-    paddingTop: 80,
+    paddingTop: 50,
   },
   subtitle: {
     fontSize: 18,
@@ -90,16 +87,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center'
   },
-  handImage: {
-    width: 140,
-    height: 140,
-    marginVertical: 22,
-    alignSelf: 'center'
-  },
   buttonContainer: {
     flexDirection: 'row',
     gap: 40,
-    marginTop: 20,
+    marginTop: 0,
     marginBottom: 22,
     alignSelf: 'center',
   },
