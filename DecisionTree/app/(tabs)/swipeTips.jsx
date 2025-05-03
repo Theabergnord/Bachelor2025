@@ -32,7 +32,7 @@ export default function SwipeTips() {
 
         <ThemedView style={styles.container}>
         <Header/>
-        <ThemedText style={styles.subtitle}>{t('BEFORE_START')}</ThemedText>
+        <ThemedText style={styles.subtitle}>{('FØR GJENNOMFØRING')}</ThemedText>
 
           <TipsBox
             subtitle="Swipe til venstre for nei og til høyre for ja for å besvare spørsmålene mer effektivt!"
