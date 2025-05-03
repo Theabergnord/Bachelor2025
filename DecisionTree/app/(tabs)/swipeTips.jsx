@@ -7,13 +7,14 @@ import { ThemedText } from '@/components/ThemedText';
 import TipsBox from '@/components/TipsBox';
 import NextButton from '@/components/NextButton';
 import Header from '@/components/Header';
+import { useTranslation } from 'react-i18next';
+import { BottomTabBar } from '@react-navigation/bottom-tabs';
+
 
 export default function SwipeTips() {
   const router = useRouter();
 
-  const handleBack = () => {
-    router.back();
-  };
+  const { t } = useTranslation();
 
   const handleNext = async () => {
     try {
@@ -31,10 +32,9 @@ export default function SwipeTips() {
 
         <ThemedView style={styles.container}>
         <Header/>
-          <ThemedText style={styles.subtitle}>FØR GJENNOMFØRING</ThemedText>
+        <ThemedText style={styles.subtitle}>{t('BEFORE_START')}</ThemedText>
 
           <TipsBox
-            title="Tips!"
             subtitle="Swipe til venstre for nei og til høyre for ja for å besvare spørsmålene mer effektivt!"
           />
 
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 22,
     alignItems: 'flex-start',
     backgroundColor: BG,
-    paddingTop: 60,
+    paddingTop: 80,
   },
   subtitle: {
     fontSize: 18,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 40,
     marginTop: 20,
-    marginBottom: 20,
+    marginBottom: 65,
     alignSelf: 'center',
   },
   
@@ -154,8 +154,11 @@ const styles = StyleSheet.create({
     height: 60,
     backgroundColor: '#345641',
     borderRadius: 1,
+    alignSelf: 'center'
   },
   nextButton: {
-    marginTop: 50,
+    paddingTop: 150,
+    
   },
+
 });

@@ -6,6 +6,8 @@ import { ThemedView } from '@/components/ThemedView';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+{/*import Header from '@/components/Header'*/}
+
 
 const GuidelinesScreen = () => {
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -43,7 +45,6 @@ const GuidelinesScreen = () => {
 
   return (
     <ParallaxScrollView>
-      <Header />  
     <ThemedView style={styles.container}>
       {/* Tittel */}
       {/* Usikker på om skal med!   <ThemedText style={styles.subtitle}>{t('TITLE_GUIDELINES')}</ThemedText> */}
@@ -130,11 +131,7 @@ const GuidelinesScreen = () => {
             );
           })}
         </View>
-
-
-<NextButton onPress={handleNext} text={t('NEXT')} style={{ marginBottom: 32 }} />
   
-
       {/* Modal for å vise informasjon */}
       <Modal
         animationType="fade"
