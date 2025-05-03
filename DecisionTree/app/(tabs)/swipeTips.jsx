@@ -29,10 +29,8 @@ export default function SwipeTips() {
     <>
       <Stack.Screen options={{ headerShown: false }} />
 
-      <SafeAreaView style={styles.safeArea}>
-        <Header/>
-
         <ThemedView style={styles.container}>
+        <Header/>
           <ThemedText style={styles.subtitle}>FØR GJENNOMFØRING</ThemedText>
 
           <TipsBox
@@ -61,7 +59,6 @@ export default function SwipeTips() {
 
           <NextButton onPress={handleNext} text="Neste" style={styles.nextButton} />
         </ThemedView>
-      </SafeAreaView>
     </>
   );
 }
@@ -92,32 +89,32 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 22,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: BG,
-    paddingTop: 30,
+    paddingTop: 60,
   },
-  pageTitle: {
+  subtitle: {
     fontSize: 18,
     color: PRIMARY,
     fontWeight: '500',
     letterSpacing: 0.5,
+    marginTop: 16,
     marginBottom: 16,
     textAlign: 'center',
-  },
-  subtitle: {
-    marginBottom: 20
+    alignSelf: 'center'
   },
   handImage: {
     width: 140,
     height: 140,
     marginVertical: 22,
+    alignSelf: 'center'
   },
   buttonContainer: {
     flexDirection: 'row',
     gap: 40,
     marginTop: 20,
     marginBottom: 20,
-    alignItems: 'center',
+    alignSelf: 'center',
   },
   
   noButton: {

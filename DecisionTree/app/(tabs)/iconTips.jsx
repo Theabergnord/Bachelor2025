@@ -23,11 +23,10 @@ export default function ProgressTips() {
       
       <Stack.Screen options={{ headerShown: false }} />
 
-      <SafeAreaView style={styles.safeArea}>
-        <Header onBackPress={handleBack} />
         <ThemedView style={styles.container}>
+        <Header />
           {/* Tittel */}
-          <ThemedText style={styles.pageTitle}>FØR GJENNOMFØRING</ThemedText>
+          <ThemedText style={styles.subtitle}>FØR GJENNOMFØRING</ThemedText>
 
           {/* Tips boks */}
           <TipsBox
@@ -73,7 +72,7 @@ export default function ProgressTips() {
           <NextButton style={styles.startButton}
   onPress={() => router.push({ pathname: '/decisionTreePage', params: { reset: 'true' } })} />
         </ThemedView>
-      </SafeAreaView>
+      
     </>
   );
 }
@@ -83,18 +82,14 @@ const BG = '#fff';
 const PROGRESS = '#BEE3C6';
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: BG,
-  },
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: BG,
     paddingHorizontal: 20,
-    paddingTop: 0,
+    paddingTop: 90,
   },
-  pageTitle: {
+  subtitle: {
     fontSize: 18,
     color: PRIMARY,
     fontWeight: '400',
@@ -102,11 +97,13 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     marginTop: 8,
     textAlign: 'center',
+    alignSelf: 'center'
   },
   iconRow: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
     marginTop: 7,
     marginBottom: 16,
     gap: 28,
@@ -149,20 +146,5 @@ const styles = StyleSheet.create({
     zIndex: 1,
     width: '100%',
     textAlign: 'center',
-  },
-  nextButton: {
-    marginTop: 12,
-    alignSelf: 'center',
-    borderWidth: 2,
-    borderColor: PRIMARY,
-    borderRadius: 22,
-    paddingVertical: 8,
-    paddingHorizontal: 36,
-    backgroundColor: BG,
-    shadowColor: PRIMARY,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 2,
-    elevation: 2,
   },
 });
