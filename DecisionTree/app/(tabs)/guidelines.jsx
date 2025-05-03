@@ -66,7 +66,9 @@ const GuidelinesScreen = () => {
             style={styles.guidelineCell}
             onPress={() => handleNumberPress(guideline.number)}
           >
-            <View style={[styles.guidelineNumberCircle, { backgroundColor: fillColor }]}>
+            <View style={[ styles.guidelineNumberCircle, 
+            { backgroundColor: 'white', borderColor: fillColor, borderWidth: 5 }
+            ]}>
               <ThemedText style={styles.guidelineNumberText}>{guideline.number}</ThemedText>
             </View>
             <ThemedText style={styles.guidelineTitle}>{t(guideline.titleKey)}</ThemedText>
@@ -198,15 +200,15 @@ const styles = StyleSheet.create({
     marginVertical: 0,
   },
   guidelineNumberCircle: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
+    width: 35,
+    height: 35,
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 2,
   },
   guidelineNumberText: {
-    color: 'white',
+    color: '#345641',
     fontWeight: 'bold',
     fontSize: 16,
   },

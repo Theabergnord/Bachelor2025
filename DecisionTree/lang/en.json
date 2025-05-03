@@ -17,13 +17,10 @@
     "NO": "No",
     "EXIT": "Exit",
     "OF": "of",
-    "HOME": "Home",
-    "GUIDELINES": "Guidelines",
     "TREE": "Tree",
-    "MORE": "More",
     "CLOSE": "Close",
 
-    "TITLE_GUIDELINES": "Before you start",
+    "TITLE_GUIDELINES": "BEFORE ASSESSMENT",
     "GUIDELINES_TITLE": "GUIDELINES",
     "GUIDELINE_CIRCLE": "Guideline",
     "GUIDELINE_CLICK": "Click the numbers to read the guidelines",
@@ -34,7 +31,23 @@
     "G5": "Data interpretation",
     "G6": "Data reporting",
     "G7": "Data dissemination",
-    "G8": "Monitoring"
+    "G8": "Monitoring",
+
+    "TIP1": "Swipe left for no and right for yes to answer the questions more efficiently!",
+
+    "ICON_SUBTITLE": "BEFORE ASSESSMENT  ➔ 0 of 8",
+    "ICON_T1": "Above, you can see which of the 8 steps you are at in the process.",
+    "ICON_T2": "Below, you can see the percentage of the process that us been complete.",
+    "GREEN_T": "➔ Continue to the next step",
+    "YELLOW_T": "➔ Uncertainties in the process",
+    "RED_T": "➔ End of the decision tree",
+
+    "MORE_INFO": "More information",
+    "MORE_1": "About",
+    "MORE_2": "Help",
+    "MORE_3": "Privacy",
+    "MORE_4": "Contact"
+
     ,
     "FEEDBACK_TITLE": {
         "red": "Do not proceed!",

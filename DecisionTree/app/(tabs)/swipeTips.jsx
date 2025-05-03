@@ -31,10 +31,10 @@ export default function SwipeTips() {
 
         <ThemedView style={styles.container}>
         <Header/>
-        <ThemedText style={styles.subtitle}>{('FØR GJENNOMFØRING')}</ThemedText>
+        <ThemedText style={styles.subtitle}>{t('TITLE_GUIDELINES')}</ThemedText>
 
           <TipsBox
-            subtitle="Swipe til venstre for nei og til høyre for ja for å besvare spørsmålene mer effektivt!"
+            subtitle={t('TIP1')}
           />
 
           {/*Swipe-hånd gif*/}
@@ -44,17 +44,17 @@ export default function SwipeTips() {
           {/* Ja/Nei knapper*/}
           <ThemedView style={styles.buttonContainer}>
             <TouchableOpacity style={styles.noButton} activeOpacity={1}>
-              <ThemedText style={styles.noButtonText}>Nei</ThemedText>
+              <ThemedText style={styles.noButtonText}>{t('NO')}</ThemedText>
             </TouchableOpacity>
 
             <View style={styles.separator} />
 
             <TouchableOpacity style={styles.yesButton} activeOpacity={1}>
-              <ThemedText style={styles.yesButtonText}>Ja</ThemedText>
+              <ThemedText style={styles.yesButtonText}>{t('YES')}</ThemedText>
             </TouchableOpacity>
           </ThemedView>
 
-          <NextButton onPress={handleNext} text="Neste" style={styles.nextButton} />
+          <NextButton onPress={handleNext} text={t('NEXT')} style={styles.nextButton} />
         </ThemedView>
     </>
   );
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 16,
     color: PRIMARY,
     fontWeight: '500',
     letterSpacing: 0.5,
@@ -97,35 +97,35 @@ const styles = StyleSheet.create({
   
   noButton: {
     backgroundColor: '#fff',
-    borderColor: '#345641', 
+    borderColor: '#345641',
     borderWidth: 2,
-    width: 120, 
-    height: 120, 
+    width: 100,
+    height: 100,
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
   },
   yesButton: {
-    backgroundColor: '#345641', 
-    borderColor: '#345641', 
+    backgroundColor: '#345641',
+    borderColor: '#345641',
     borderWidth: 2,
-    width: 120, 
-    height: 120, 
+    width: 100,
+    height: 100,
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
   },
   noButtonText: {
-    color: '#345641', 
+    color: '#345641',
     fontSize: 20,
-    fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'Poppins_400Regular',
   },
   yesButtonText: {
     color: '#fff',
     fontSize: 20,
-    fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'Poppins_400Regular',
   },
   separator: {
     width: 2,
