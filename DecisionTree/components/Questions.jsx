@@ -11,7 +11,7 @@ const { height } = Dimensions.get('window')
 const progressBarHeight = 30;
 const progressBarBottom = height * 0.05;
 
-const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer, progress }) => {
+const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer, progress, stepProgress }) => {
   const { t } = useTranslation()
   const insets = useSafeAreaInsets()
 
@@ -38,7 +38,8 @@ const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer, prog
       </ThemedView>
 
     </ThemedView>
-    <ProgressBar progress={progress} bottomInset={insets.bottom} />
+    <ProgressBar step={stepNumber} totalSteps={8} stepProgress={stepProgress} progress={progress} bottomInset={insets.bottom} />
+
     </>
   );
 };
