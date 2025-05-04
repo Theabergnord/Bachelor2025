@@ -29,12 +29,14 @@ const ProgressBar = ({ step = 1, totalSteps = 8, stepProgress = 0, progress = 0,
             const isFilled = index < currentStepIndex;
             const fillRatio = isCurrent ? stepProgress : isFilled ? 1 : 0;
 
+            const isLast = index === totalSteps - 1;
             const borderRadius = {
               borderTopLeftRadius: index === 0 ? 15 : 0,
               borderBottomLeftRadius: index === 0 ? 15 : 0,
-              borderTopRightRadius: index === totalSteps - 1 ? 15 : 0,
-              borderBottomRightRadius: index === totalSteps - 1 ? 15 : 0,
+              borderTopRightRadius: isLast && fillRatio === 1 ? 15 : 0,
+              borderBottomRightRadius: isLast && fillRatio === 1 ? 15 : 0,
             };
+
 
             return (
               <View key={index} style={[styles.stepBlock, borderRadius]}>
