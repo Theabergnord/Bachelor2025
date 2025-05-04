@@ -3,7 +3,7 @@
     "START": "START",
     "NORWEGIAN": "Norsk",
     "ENGLISH": "Engelsk",
-    "LANGUAGE": "Språk",
+    "LANGUAGE": "Language",
     "SELECT": "Velg språk",
     "HOME": "Hjem",
     "GUIDELINES": "Retningslinjer",
@@ -15,7 +15,38 @@
     "QUESTION": "Spørsmål",
     "YES": "Ja",
     "NO": "Nei",
-    "EXIT": "Avslutt"
+    "EXIT": "Avslutt",
+    "OF": "av",
+    "TREE": "Tre",
+    "CLOSE": "Lukk",
+
+    "TITLE_GUIDELINES": "FØR GJENNOMFØRING",
+    "GUIDELINES_TITLE": "RETNINGSLINJER",
+    "GUIDELINE_CIRCLE": "Retningslinje",
+    "GUIDELINE_CLICK": "Klikk på tallene for å lese retningslinjene",
+    "G1": "Forberedelse",
+    "G2": "Oppstart av vurdering",
+    "G3": "Valg av methode",
+    "G4": "Data innsamling",
+    "G5": "Tolkning av data",
+    "G6": "Rapportering av data",
+    "G7": "Formidling av data",
+    "G8": "Monitorering",
+
+    "TIP1": "Swipe til venstre for nei og til høyre for ja for å besvare spørsmålene mer effektivt!",
+
+    "ICON_SUBTITLE": "FØR GJENNOMFØRING ➔ 0 av 8",
+    "ICON_T1": "Over vises hvilket av de 8 trinnene du er på i prosessen.",
+    "ICON_T2": "Nedenfor vises hvor mange prosent som er gjennomført.",
+    "GREEN_T": "➔ Fortsett på neste trinn",
+    "YELLOW_T": "➔ Usikkerheter i prosessen",
+    "RED_T": "➔ Markerer avslutning av beslutningstreet",
+
+    "MORE_INFO": "Mer informasjon",
+    "MORE_1": "Om appen",
+    "MORE_2": "Hjelp",
+    "MORE_3": "Personvern",
+    "MORE_4": "Kontakt"
     ,
     "FEEDBACK_TITLE": {
         "red": "Ikke gå videre!",

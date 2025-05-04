@@ -1,6 +1,7 @@
 import { StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import LanguageSelector from '../../components/LanguageSelector';
 import { ThemedView } from '../../components/ThemedView';
 {/* Nesteknapp
@@ -30,7 +31,7 @@ export default function IndexScreen() {
 
 <TouchableOpacity
   style={styles.startButton}
-  onPress={() => router.push({ pathname: '/(tabs)/decisionTreePage', params: { reset: 'true' } })}
+  onPress={() => router.push({ pathname: '/swipeTips', params: { reset: 'true' } })}
 >
   <Text style={styles.startText}>{t('START')}</Text>
 </TouchableOpacity>

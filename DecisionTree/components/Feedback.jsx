@@ -7,7 +7,7 @@ import ParallaxScrollView from './ParallaxScrollView'
 
 const feedbackMap = {
   red: {
-    color: '#B7220B',
+    color: '#AF0012',
     icon: require('../assets/images/warning_red.png'),
   },
   yellow: {
@@ -54,9 +54,11 @@ export default function Feedback({ feedbackType = 'green', message = '', onNext 
               {title}
             </ThemedText>
 
+            <View style={styles.textWrapper}>
             <ThemedText type="default" style={styles.text}>
               {finalMessage}
             </ThemedText>
+            </View>
           </>
         )}
 
@@ -69,7 +71,7 @@ export default function Feedback({ feedbackType = 'green', message = '', onNext 
 const styles = StyleSheet.create({
   lineWrapper: {
     position: 'relative',
-    marginTop: 120,
+    marginTop: 60,
     marginBottom: 40,
   },
   curvedLine: {
@@ -78,9 +80,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 80,
     borderTopRightRadius: 80,
     shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: -20 },
-    shadowRadius: 4,
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: -7 },
+    shadowRadius: 5,
     elevation: 4,
   },
   icon: {
@@ -101,9 +103,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 16,
   },
+  textWrapper: {
+    width: '100%',
+    maxWidth: '95%',
+    alignSelf: 'center',
+  },
   text: {
-    textAlign: 'center',
+    textAlign: 'left',
     marginBottom: 40,
+    fontSize: 16,
   },
 })
 

@@ -1,11 +1,22 @@
 import React, { useRef } from 'react';
-import { Animated, Easing, StyleSheet, View, TouchableOpacity, } from 'react-native';
+import { Animated, Easing, StyleSheet, View, TouchableOpacity, Dimensions } from 'react-native';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useTranslation } from 'react-i18next';
+import ProgressBar from './ProgressBar';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const Questions = ({ stepNumber, totalSteps, question, onAnswer }) => {
+const { height } = Dimensions.get('window');
+const progressBarHeight = 30;
+const progressBarBottom = height * 0.05;
+
+const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer, progress }) => {
   const animatedValue = useRef(new Animated.Value(0)).current;
+  const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
+
+  const buttonBottom = insets.bottom + progressBarBottom + progressBarHeight + height * 0.02 - 30;
 
   const triggerSwipe = (isYes) => {
     const toValue = isYes ? 300 : -300;
@@ -22,33 +33,35 @@ const Questions = ({ stepNumber, totalSteps, question, onAnswer }) => {
   };
 
   return (
-    <GestureRecognizer
-      onSwipeLeft={() => triggerSwipe(false)}
-      onSwipeRight={() => triggerSwipe(true)}
-      config={{ velocityThreshold: 0.3, directionalOffsetThreshold: 80 }}
-      style={{ flex: 1 }}
-    >
-      <Animated.View style={[styles.container, {
-        transform: [{ translateX: animatedValue }],
-      }]}>
-        <ThemedText style={styles.title}>Forberedende trinn</ThemedText>
-        <ThemedText style={styles.subtitle}>{stepNumber} av {totalSteps}</ThemedText>
+    <>
+      <GestureRecognizer
+        onSwipeLeft={() => triggerSwipe(false)}
+        onSwipeRight={() => triggerSwipe(true)}
+        config={{ velocityThreshold: 0.3, directionalOffsetThreshold: 80 }}
+        style={{ flex: 1 }}
+      >
+        <Animated.View style={[styles.container, {
+          transform: [{ translateX: animatedValue }],
+        }]}>
+          <ThemedText style={styles.title}>{stepTitle}</ThemedText>
+          <ThemedText style={styles.subtitle}>{stepNumber} {t('OF')} {totalSteps}</ThemedText>
+          <ThemedText style={styles.question}>{question}</ThemedText>
 
-        <ThemedText style={styles.question}>{question}</ThemedText>
+          <ThemedView style={[styles.buttonContainer, { bottom: buttonBottom }]}>
+            <TouchableOpacity style={styles.noButton} onPress={() => triggerSwipe(false)}>
+              <ThemedText style={styles.noButtonText}>{t('NO')}</ThemedText>
+            </TouchableOpacity>
 
-        <ThemedView style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.noButton} onPress={() => triggerSwipe(false)}>
-            <ThemedText style={styles.noButtonText}>Nei</ThemedText>
-          </TouchableOpacity>
+            <View style={styles.separator} />
 
-          <View style={styles.separator} />
-
-          <TouchableOpacity style={styles.yesButton} onPress={() => triggerSwipe(true)}>
-            <ThemedText style={styles.yesButtonText}>Ja</ThemedText>
-          </TouchableOpacity>
-        </ThemedView>
-      </Animated.View>
-    </GestureRecognizer>
+            <TouchableOpacity style={styles.yesButton} onPress={() => triggerSwipe(true)}>
+              <ThemedText style={styles.yesButtonText}>{t('YES')}</ThemedText>
+            </TouchableOpacity>
+          </ThemedView>
+        </Animated.View>
+      </GestureRecognizer>
+      <ProgressBar progress={progress} bottomInset={insets.bottom} />
+    </>
   );
 };
 
@@ -56,28 +69,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    padding: 20,
+    width: '100%',
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: 'Poppins_600SemiBold',
+    textAlign: 'center',
+    maxWidth: '95%',
   },
   subtitle: {
     fontSize: 18,
     marginVertical: 8,
   },
   question: {
-    fontSize: 16,
+    fontSize: 18,
     marginVertical: 16,
     textAlign: 'center',
+    marginTop: 10,
   },
   buttonContainer: {
     flexDirection: 'row',
     gap: 40,
-    marginTop: 40,
     alignItems: 'center',
     position: 'absolute',
-    bottom: 150,
   },
   noButton: {
     backgroundColor: '#fff',
@@ -102,14 +116,14 @@ const styles = StyleSheet.create({
   noButtonText: {
     color: '#345641',
     fontSize: 20,
-    fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'Poppins_400Regular',
   },
   yesButtonText: {
     color: '#fff',
     fontSize: 20,
-    fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'Poppins_400Regular',
   },
   separator: {
     width: 2,

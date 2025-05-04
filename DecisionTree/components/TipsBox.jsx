@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#E8F5E9',
     paddingVertical: 15,
-    paddingHorizontal: 25,
+    paddingHorizontal: 15,
     borderRadius: 15,
     alignItems: 'center',
     borderWidth: 3,
@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold', 
     color: '#2E443E',
-    marginBottom: 5,
+    marginBottom: 2,
   },
   subtitle: {
     color: '#2E443E', 
