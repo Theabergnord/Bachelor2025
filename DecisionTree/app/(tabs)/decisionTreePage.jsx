@@ -1,34 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import Step from '../../components/Questions';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import Feedback from '../../components/Feedback';                  
 import decisionTreeDataNO from '../data/decisionTreeDataNO';
 import decisionTreeDataEN from '../data/decisionTreeDataEN';
 import { useTranslation } from 'react-i18next';
-import { useRouter, useFocusEffect, useLocalSearchParams } from 'expo-router';
+import { useRouter } from 'expo-router';
+import { useFocusEffect, useLocalSearchParams } from 'expo-router';
+import { useCallback } from 'react';
 import TransitionMessage from '../../components/TransitionMessage';
 import Header from '../../components/Header';
-import ProgressBar from '../../components/ProgressBar';
-
-// 🔧 Funksjon for trinn-fremdrift basert på spørsmåls-ID
-const getStepProgressFromId = (stepNumber, currentId, decisionTreeData) => {
-  const stepQuestions = decisionTreeData.filter(
-    (node) => node.step === stepNumber && !node.isTransition
-  );
-
-  const questionNumbers = stepQuestions
-    .map((q) => parseInt(q.id.replace('q', ''), 10))
-    .filter((num) => !isNaN(num));
-
-  if (questionNumbers.length === 0 || !currentId.startsWith('q')) return 0;
-
-  const currentNum = parseInt(currentId.replace('q', ''), 10);
-  const min = Math.min(...questionNumbers);
-  const max = Math.max(...questionNumbers);
-
-  const progress = (currentNum - min) / (max - min);
-  return Math.max(0, Math.min(progress, 1));
-};
+import ProgressBar from '../../components/ProgressBar'; 
 
 const DecisionTreePage = () => {
   const { t, i18n } = useTranslation();
@@ -41,7 +23,6 @@ const DecisionTreePage = () => {
 
   const decisionTreeData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN;
   const currentNode = decisionTreeData.find((node) => node.id === currentId);
-  const stepNumber = currentNode?.step || 1;
 
   const stepTitles = {
     1: { no: 'Forberedende steg for vurdering av BC', en: 'Preparatory steps for consideration for BC assessment' },
@@ -127,47 +108,30 @@ const DecisionTreePage = () => {
     return match ? parseInt(match[0], 10) : 0;
   };
 
-  const referenceId = currentNode?.isTransition
-    ? history[history.length - 1]
-    : currentId;
-
+  const referenceId = currentNode?.isTransition ? history[history.length - 1] : currentId;
   const currentIndex = extractNumber(referenceId || 'q1');
   const overallProgress = Math.round((currentIndex / 37) * 100);
-  const stepProgress = getStepProgressFromId(stepNumber, currentId, decisionTreeData);
 
+  const getStepProgressFromId = (stepNumber, currentId) => {
+    const stepQuestions = decisionTreeData.filter(
+      (node) => node.step === stepNumber && !node.isTransition
+    );
+
+    const questionNumbers = stepQuestions.map((q) => parseInt(q.id.replace('q', ''), 10)).filter((n) => !isNaN(n));
+
+    if (questionNumbers.length === 0 || !currentId.startsWith('q')) return 0;
+
+    const currentNum = parseInt(currentId.replace('q', ''), 10);
+    const min = Math.min(...questionNumbers);
+    const max = Math.max(...questionNumbers);
+
+    return Math.max(0, Math.min((currentNum - min) / (max - min), 1));
+  };
+
+  const stepNumber = currentNode.step || 1;
+  const stepProgress = getStepProgressFromId(stepNumber, currentId);
   const lang = i18n.language === 'no' ? 'no' : 'en';
   const stepTitle = stepTitles[stepNumber]?.[lang] ?? '';
-
-  if (feedbackOption) {
-    const currentData = i18n.language === 'no' ? decisionTreeDataNO : decisionTreeDataEN;
-    const currentNodeData = currentData.find((node) => node.id === feedbackOption.fromNode);
-    const matchedOption = currentNodeData?.options.find((o) => o.feedbackType === feedbackOption.feedbackType);
-    const message = matchedOption?.feedbackMessage;
-
-    const handleNext = () => {
-      if (feedbackOption.feedbackType === 'red') {
-        router.replace({ pathname: '/', params: { reset: 'true' } });
-      } else {
-        const fallbackNext = matchedOption?.next ?? null;
-        if (fallbackNext) {
-          setCurrentId(fallbackNext);
-        } else {
-          const nodeIndex = decisionTreeData.findIndex(n => n.id === feedbackOption.fromNode);
-          const nextNode = decisionTreeData[nodeIndex + 1];
-          setCurrentId(nextNode?.id ?? 'q1');
-        }
-        setFeedbackOption(null);
-      }
-    };
-
-    return (
-      <Feedback
-        feedbackType={feedbackOption.feedbackType}
-        message={message}
-        onNext={handleNext}
-      />
-    );
-  }
 
   if (currentNode?.isTransition) {
     return (
@@ -176,12 +140,7 @@ const DecisionTreePage = () => {
           message={currentNode.message}
           onNext={() => setCurrentId(currentNode.next)}
         />
-        <ProgressBar
-          step={stepNumber}
-          stepProgress={stepProgress}
-          totalSteps={8}
-          progress={overallProgress}
-        />
+        <ProgressBar step={stepNumber} stepProgress={stepProgress} progress={overallProgress} />
       </ParallaxScrollView>
     );
   }

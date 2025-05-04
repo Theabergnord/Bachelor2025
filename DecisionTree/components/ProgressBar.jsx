@@ -21,7 +21,7 @@ const ProgressBar = ({ step = 1, totalSteps = 8, stepProgress = 0, progress = 0,
   const currentStepIndex = Math.max(0, Math.min(step - 1, totalSteps - 1));
 
   return (
-    <View style={[styles.container, { bottom: bottomInset + height * 0.05 }]}>
+    <View style={[styles.container, { bottom: bottomInset + height * 0.05 }]}> 
       <View style={styles.barBackground}>
         <View style={styles.stepContainer}>
           {shades.map((color, index) => {
@@ -37,7 +37,6 @@ const ProgressBar = ({ step = 1, totalSteps = 8, stepProgress = 0, progress = 0,
               borderBottomRightRadius: isLast && fillRatio === 1 ? 15 : 0,
             };
 
-
             return (
               <View key={index} style={[styles.stepBlock, borderRadius]}>
                 <View
@@ -52,8 +51,8 @@ const ProgressBar = ({ step = 1, totalSteps = 8, stepProgress = 0, progress = 0,
             );
           })}
         </View>
-        <View style={styles.textOverlay}>
-          <Text style={styles.progressText}>{`${progress}%`}</Text>
+        <View style={styles.percentageOverlay}>
+          <Text style={styles.percentageText}>{`${progress}%`}</Text>
         </View>
       </View>
     </View>
@@ -89,18 +88,17 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginHorizontal: 0.5,
   },
-  textOverlay: {
+  percentageOverlay: {
     position: 'absolute',
-    width: '100%',
-    height: '100%',
+    alignSelf: 'center',
+    top: 0,
+    bottom: 0,
     justifyContent: 'center',
-    alignItems: 'flex-end',
-    paddingRight: 10,
   },
-  progressText: {
-    color: '#fff',
+  percentageText: {
+    color: '#000000',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 14,
   },
 });
 
