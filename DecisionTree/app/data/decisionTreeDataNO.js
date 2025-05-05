@@ -643,14 +643,14 @@ const decisionTreeDataNO = [
     question: 'Overstiger det foreslåtte antallet vurderinger 4–6 ganger per år?',
     options: [
       {
-        label: 'Nei',
-        next: 'q36',
-      },
-      {
         label: 'Ja',
         feedbackType: 'red',
         feedbackMessage:
           'Ikke gå videre med et høyere antall vurderinger, med mindre det finnes spesifikke grunner. Reduser antallet vurderinger og tilpass det forventet respons.',
+      },
+      {
+        label: 'Nei',
+        next: 'q36',
       },
     ],
   },
