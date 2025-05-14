@@ -7,6 +7,7 @@ import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
+import { Image } from 'react-native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -43,18 +44,22 @@ export default function TabLayout() {
       />
       
       <Tabs.Screen
-        name="guidelines"
-        options={{
-          title: t('GUIDELINES'),
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name={focused ? "document-text" : "document-text-outline"}
-              size={28}
-              color={color}
-            />
-          ),
-        }}
+  name="guidelines"
+  options={{
+    title: t('GUIDELINES'),
+    tabBarIcon: ({ focused }) => (
+      <Image
+        source={
+          focused
+            ? require('../../assets/images/retningslinjer_ikon1.png')
+            : require('../../assets/images/retningslinjer_ikon2.png')
+        }
+        style={{ width: 28, height: 28 }}
+        resizeMode="contain"
       />
+    ),
+  }}
+/>
       <Tabs.Screen
         name="decisionTreePage"
         options={{
