@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useRouter } from 'expo-router'
 import { ThemedText } from './ThemedText'
 import NextButton from './NextButton'
+import ExitButton from './ExitButton'
 import ParallaxScrollView from './ParallaxScrollView'
 
 const feedbackMap = {
@@ -25,18 +26,14 @@ export default function Feedback({ feedbackType = 'green', message = '', onNext 
   const router = useRouter()
   const { color, icon } = feedbackMap[feedbackType]
   const showFeedback = feedbackType !== 'green'
+  const isRed = feedbackType === 'red'
 
   const title = t(`FEEDBACK_TITLE.${feedbackType}`)
   const finalMessage = message || t('DEFAULT_FEEDBACK_MESSAGE')
-  const buttonLabel = feedbackType === 'red' ? t('EXIT') : t('NEXT')
 
   const handlePress = () => {
-    if (feedbackType === 'red') {
-      router.replace({ pathname: '/', params: { reset: 'true' } })
-    } else {
-      onNext()
-    }
-  };
+    onNext()
+  }
 
   return (
     <ParallaxScrollView noPadding>
@@ -55,14 +52,28 @@ export default function Feedback({ feedbackType = 'green', message = '', onNext 
             </ThemedText>
 
             <View style={styles.textWrapper}>
-            <ThemedText type="default" style={styles.text}>
-              {finalMessage}
-            </ThemedText>
+              <ThemedText type="default" style={styles.text}>
+                {finalMessage}
+              </ThemedText>
             </View>
           </>
         )}
 
-        <NextButton onPress={handlePress} text={buttonLabel} style={{ marginBottom: 32 }} />
+        <NextButton
+          onPress={handlePress}
+          text={t('NEXT')}
+          feedbackType={feedbackType}
+        />
+
+        {/* Avsluttknapp som kun vises ved rød tilbakemelding */}
+        {isRed && (
+          <View style={{ marginTop: 16 }}>
+            <ExitButton
+              onPress={() => router.replace({ pathname: '/', params: { reset: 'true' } })}
+              text={t('EXIT')}
+            />
+          </View>
+        )}
       </View>
     </ParallaxScrollView>
   )
@@ -114,4 +125,3 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 })
-

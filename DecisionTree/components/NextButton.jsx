@@ -1,9 +1,16 @@
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-export default function NextButton({ onPress = () => {}, text = 'Neste' }) {
+export default function NextButton({ onPress = () => {}, text = 'Neste', feedbackType }) {
+  const isRed = feedbackType === 'red';
+
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Text style={styles.text}>{text}</Text>
+    <TouchableOpacity
+      style={[styles.button, isRed && styles.buttonRed]}
+      onPress={onPress}
+    >
+      <Text style={[styles.text, isRed && styles.textRed]}>
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -17,6 +24,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingVertical: 12,
     paddingHorizontal: 24,
+    marginBottom: 5,
+  },
+  buttonRed: {
+    borderColor: '#AF0012',
   },
   text: {
     color: '#345641',
@@ -24,7 +35,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_400Regular',
     marginBottom: -2,
   },
+  textRed: {
+    color: '#AF0012',
+  },
 });
+
 
 
 /* Kilder

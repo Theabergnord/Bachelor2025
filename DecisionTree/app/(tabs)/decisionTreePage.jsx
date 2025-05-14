@@ -135,20 +135,19 @@ const DecisionTreePage = () => {
     const message = matchedOption?.feedbackMessage
 
     const handleNext = () => {
-      if (feedbackOption.feedbackType === 'red') {
-        router.replace({ pathname: '/', params: { reset: 'true' } })
+      const fallbackNext = matchedOption?.next ?? null
+    
+      if (fallbackNext) {
+        setCurrentId(fallbackNext)
       } else {
-        const fallbackNext = matchedOption?.next ?? null
-        if (fallbackNext) {
-          setCurrentId(fallbackNext)
-        } else {
-          const nodeIndex = decisionTreeData.findIndex(n => n.id === feedbackOption.fromNode)
-          const nextNode = decisionTreeData[nodeIndex + 1]
-          setCurrentId(nextNode?.id ?? 'q1')
-        }
-        setFeedbackOption(null)
+        const nodeIndex = decisionTreeData.findIndex(n => n.id === feedbackOption.fromNode)
+        const nextNode = decisionTreeData[nodeIndex + 1]
+        setCurrentId(nextNode?.id ?? 'q1')
       }
-    };
+    
+      setFeedbackOption(null)
+    }
+    
 
     return (
       <Feedback
