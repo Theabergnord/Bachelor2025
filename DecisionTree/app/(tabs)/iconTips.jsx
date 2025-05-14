@@ -8,96 +8,99 @@ import NextButton from '@/components/NextButton';
 import Header from '@/components/Header';
 import ProgressBar from '../../components/ProgressBar';
 import { useTranslation } from 'react-i18next';
+import GestureRecognizer from 'react-native-swipe-gestures';
 
 export default function ProgressTips() {
   const router = useRouter();
   const { t } = useTranslation();
 
+  const handleNext = () => {
+    router.push({ pathname: '/decisionTreePage', params: { reset: 'true' } });
+  };
+
   return (
     <>
       <Stack.Screen options={{ headerShown: false }} />
 
-      <ThemedView style={styles.container}>
-        {/* TOPP */}
-        <View style={styles.topArea}>
-          <Header />
-          <ThemedText style={styles.subtitle}>{t('ICON_SUBTITLE')}</ThemedText>
-        </View>
-
-        {/* MIDT */}
-        <View style={styles.middleArea}>
-          <TipsBox
-            title="Tips!"
-            subtitle={
-              <View style={{ width: '100%' }}>
-                <ThemedText style={styles.text_tips}>
-                  {t('ICON_T1')}
-                </ThemedText>
-                <ThemedText style={styles.text_tips}>
-                  {t('ICON_T2')}
-                </ThemedText>
-
-                {/* Grønt */}
-                <View style={styles.inlineRow}>
-                  <Image
-                    source={require('@/assets/images/warning_green.png')}
-                    style={styles.inlineIcon}
-                    resizeMode="contain"
-                  />
-                  <View style={styles.textContainer}>
-                    <ThemedText style={styles.text_inline}>
-                    {t('GREEN_T')}
-                    </ThemedText>
-                  </View>
-                </View>
-
-                {/* Gult */}
-                <View style={styles.inlineRow}>
-                  <Image
-                    source={require('@/assets/images/warning_yellow.png')}
-                    style={styles.inlineIcon}
-                    resizeMode="contain"
-                  />
-                  <View style={styles.textContainer}>
-                    <ThemedText style={styles.text_inline}>
-                    {t('YELLOW_T')}
-                    </ThemedText>
-                  </View>
-                </View>
-
-                {/* Rødt */}
-                <View style={styles.inlineRow}>
-                  <Image
-                    source={require('@/assets/images/warning_red.png')}
-                    style={styles.inlineIcon}
-                    resizeMode="contain"
-                  />
-                  <View style={styles.textContainer}>
-                    <ThemedText style={styles.text_inline}>
-                    {t('RED_T')}
-                    </ThemedText>
-                  </View>
-                </View>
-              </View>
-            }
-          />
-
-          {/* PROGRESSBAR */}
-          <View style={styles.progressBarContainer}>
-            <ProgressBar progress={0} />
+      <GestureRecognizer
+        onSwipeRight={handleNext}
+        onSwipeLeft={() => router.push('/swipeTips')}
+        config={{ velocityThreshold: 0.3, directionalOffsetThreshold: 80 }}
+        style={{ flex: 1 }}
+      >
+        
+        
+        <ThemedView style={styles.container}>
+          {/* TOPP */}
+          <View style={styles.topArea}>
+            <Header />
+            <ThemedText style={styles.subtitle}>{t('ICON_SUBTITLE')}</ThemedText>
           </View>
-        </View>
 
-        {/* BUNN */}
-        <View style={styles.bottomArea}>
-          <NextButton 
-            onPress={() => router.push({ pathname: '/decisionTreePage', params: { reset: 'true' } })} text={t('NEXT')}
-          />
-        </View>
-      </ThemedView>
+          {/* MIDT */}
+          <View style={styles.middleArea}>
+            <TipsBox
+              title="Tips!"
+              subtitle={
+                <View style={{ width: '100%' }}>
+                  <ThemedText style={styles.text_tips}>{t('ICON_T1')}</ThemedText>
+                  <ThemedText style={styles.text_tips}>{t('ICON_T2')}</ThemedText>
+
+                  {/* Grønt */}
+                  <View style={styles.inlineRow}>
+                    <Image
+                      source={require('@/assets/images/warning_green.png')}
+                      style={styles.inlineIcon}
+                      resizeMode="contain"
+                    />
+                    <View style={styles.textContainer}>
+                      <ThemedText style={styles.text_inline}>{t('GREEN_T')}</ThemedText>
+                    </View>
+                  </View>
+
+                  {/* Gult */}
+                  <View style={styles.inlineRow}>
+                    <Image
+                      source={require('@/assets/images/warning_yellow.png')}
+                      style={styles.inlineIcon}
+                      resizeMode="contain"
+                    />
+                    <View style={styles.textContainer}>
+                      <ThemedText style={styles.text_inline}>{t('YELLOW_T')}</ThemedText>
+                    </View>
+                  </View>
+
+                  {/* Rødt */}
+                  <View style={styles.inlineRow}>
+                    <Image
+                      source={require('@/assets/images/warning_red.png')}
+                      style={styles.inlineIcon}
+                      resizeMode="contain"
+                    />
+                    <View style={styles.textContainer}>
+                      <ThemedText style={styles.text_inline}>{t('RED_T')}</ThemedText>
+                    </View>
+                  </View>
+                </View>
+              }
+            />
+
+            {/* PROGRESSBAR */}
+            <View style={styles.progressBarContainer}>
+              <ProgressBar progress={0} />
+            </View>
+          </View>
+
+          {/* BUNN */}
+          <View style={styles.bottomArea}>
+            <NextButton onPress={handleNext} text={t('NEXT')} />
+          </View>
+        </ThemedView>
+      </GestureRecognizer>
     </>
   );
 }
+
 
 const PRIMARY = '#345641';
 const BG = '#fff';
