@@ -58,7 +58,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="decisionTreePage"
         options={{
-          title: t('TREE'),
+          title: "BCAT",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "git-branch" : "git-branch-outline"}
