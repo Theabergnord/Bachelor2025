@@ -149,7 +149,7 @@ const decisionTreeDataEN = [
     {
       id: 't1',
       isTransition: true,
-      message: 'Step 1 is complete.\n\nYou may now proceed to Step 2.',
+      message: 'Step 1 is complete!\n \nYou may now proceed to Step 2.',
       next: 'q11',
     },
 
@@ -268,7 +268,7 @@ const decisionTreeDataEN = [
       {
         id: 't2',
         isTransition: true,
-        message: 'Step 2 is complete.\n\nYou may now proceed to Step 3.',
+        message: 'Step 2 is complete!\n \nYou may now proceed to Step 3.',
         next: 'q17',
       },
 
@@ -335,7 +335,7 @@ const decisionTreeDataEN = [
       {
         id: 't3',
         isTransition: true,
-        message: 'Step 3 is complete.\n\nYou may now proceed to Step 4.',
+        message: 'Step 3 is complete!\n \nYou may now proceed to Step 4.',
         next: 'q20',
       },
 
@@ -466,7 +466,7 @@ const decisionTreeDataEN = [
       {
         id: 't4',
         isTransition: true,
-        message: 'Step 4 is complete.\n\nYou may now proceed to Step 5.',
+        message: 'Step 4 is complete!\n \nYou may now proceed to Step 5.',
         next: 'q27',
       },
        
@@ -512,7 +512,7 @@ const decisionTreeDataEN = [
       {
         id: 't5',
         isTransition: true,
-        message: 'Step 5 is complete.\n\nYou may now proceed to Step 6.',
+        message: 'Step 5 is complete!\n \nYou may now proceed to Step 6.',
         next: 'q29',
       },
       
@@ -556,7 +556,7 @@ const decisionTreeDataEN = [
       {
         id: 't6',
         isTransition: true,
-        message: 'Step 6 is complete.\n\nYou may now proceed to Step 7.',
+        message: 'Step 6 is complete!\n \nYou may now proceed to Step 7.',
         next: 'q31',
       },
       
@@ -621,7 +621,7 @@ const decisionTreeDataEN = [
       {
         id: 't7',
         isTransition: true,
-        message: 'Step 7 is complete.\n\nYou may now proceed to Step 8.',
+        message: 'Step 7 is complete!\n \nYou may now proceed to Step 8.',
         next: 'q34',
       },
       
@@ -699,7 +699,7 @@ const decisionTreeDataEN = [
       {
         id: 'complete',
         isTransition: true,
-        message: 'All steps are complete.\n\nYou have successfully completed the BC assessment decision process.',
+        message: 'All steps are complete!\n\nYou have successfully completed the BC assessment decision process, and can now proceed with carrying out a safe body composition assessment.',
       }
   ];
   

@@ -181,11 +181,12 @@ const DecisionTreePage = () => {
         <TransitionMessage
           message={currentNode.message}
           onNext={() => setCurrentId(currentNode.next)}
+          progress={overallProgress} 
         />
-        <ProgressBar progress={overallProgress}/>
       </ParallaxScrollView>
     )
   }
+  
   
   const stepNumber = currentNode.step || 1
   const lang = i18n.language === 'no' ? 'no' : 'en'

@@ -149,7 +149,7 @@ const decisionTreeDataNO = [
   {
     id: 't1',
     isTransition: true,
-    message: 'Steg 1 er fullført.\n \nDu kan nå gå videre til steg 2.',
+    message: 'Steg 1 er fullført!\n \nDu kan nå gå videre til steg 2.',
     next: 'q11',
   },
 
@@ -268,7 +268,7 @@ const decisionTreeDataNO = [
   {
     id: 't2',
     isTransition: true,
-    message: 'Steg 2 er fullført.\n\nDu kan nå gå videre til steg 3.',
+    message: 'Steg 2 er fullført!\n \nDu kan nå gå videre til steg 3.',
     next: 'q17',
   },
 
@@ -335,7 +335,7 @@ const decisionTreeDataNO = [
   {
     id: 't3',
     isTransition: true,
-    message: 'Steg 3 er fullført.\n\nDu kan nå gå videre til steg 4.',
+    message: 'Steg 3 er fullført!\n \nDu kan nå gå videre til steg 4.',
     next: 'q20',
   },
 
@@ -465,7 +465,7 @@ const decisionTreeDataNO = [
   {
     id: 't4',
     isTransition: true,
-    message: 'Steg 4 er fullført.\n\nDu kan nå gå videre til steg 5.',
+    message: 'Steg 4 er fullført!\n \nDu kan nå gå videre til steg 5.',
     next: 'q27',
   },
   
@@ -510,7 +510,7 @@ const decisionTreeDataNO = [
   {
     id: 't5',
     isTransition: true,
-    message: 'Steg 5 er fullført.\n\nDu kan nå gå videre til steg 6.',
+    message: 'Steg 5 er fullført!\n \nDu kan nå gå videre til steg 6.',
     next: 'q29',
   },
   
@@ -554,7 +554,7 @@ const decisionTreeDataNO = [
   {
     id: 't6',
     isTransition: true,
-    message: 'Steg 6 er fullført.\n\nDu kan nå gå videre til steg 7.',
+    message: 'Steg 6 er fullført!\n \nDu kan nå gå videre til steg 7.',
     next: 'q31',
   },
 
@@ -616,7 +616,7 @@ const decisionTreeDataNO = [
   {
     id: 't7',
     isTransition: true,
-    message: 'Steg 7 er fullført.\n\nDu kan nå gå videre til steg 8.',
+    message: 'Steg 7 er fullført!\n \nDu kan nå gå videre til steg 8.',
     next: 'q34',
   },
   
@@ -693,7 +693,7 @@ const decisionTreeDataNO = [
   {
     id: 'complete',
     isTransition: true,
-    message: 'Steg 8 er fullført.\n\nDu har fullført beslutningsprosessen for vurdering av kroppssammensetning.',
+    message: 'Steg 8 er fullført!\n \nDu har fullført beslutningsprosessen for vurdering av kroppssammensetning, og kan nå gå videre med å gjennomføre en trygg kroppssammensetningsvurdering.',
   }
 ];
 
