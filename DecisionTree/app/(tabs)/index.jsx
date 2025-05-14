@@ -1,15 +1,18 @@
-import { StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, Image, TouchableOpacity, Text, Modal } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LanguageSelector from '../../components/LanguageSelector';
 import { ThemedView } from '../../components/ThemedView';
+import React, { useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 {/* Nesteknapp
   import NextButton from '../../components/NextButton'; */}
 
 export default function IndexScreen() {
   const { t } = useTranslation();
   const router = useRouter();
+  const [modalVisible, setModalVisible] = useState(false);
 
   {/* Nesteknapp
     const handleNeste = () => {} */}
@@ -19,6 +22,10 @@ export default function IndexScreen() {
       <ThemedView style={styles.languageButton}>
         <LanguageSelector />
       </ThemedView>
+
+      <TouchableOpacity style={styles.helpIcon} onPress={() => setModalVisible(true)}>
+        <Ionicons name="help-circle-outline" size={30} color="#345641" />
+      </TouchableOpacity>
 
       <Image
         source={require('../../assets/images/Logo_bildeogtekst.png')}
@@ -35,6 +42,25 @@ export default function IndexScreen() {
 >
   <Text style={styles.startText}>{t('START')}</Text>
 </TouchableOpacity>
+
+<Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <TouchableOpacity style={styles.modalOverlay} onPress={() => setModalVisible(false)}>
+          <TouchableOpacity style={styles.modalBox} activeOpacity={1}>
+            <Text style={styles.modalTitle}>{t('ABOUT_APP_TITLE')}</Text>
+            <Text style={styles.modalText}>
+              {t('ABOUT_APP_TEXT')}
+            </Text>
+            <TouchableOpacity style={styles.modalCloseButton} onPress={() => setModalVisible(false)}>
+              <Text style={styles.modalCloseText}>{t('CLOSE')}</Text>
+            </TouchableOpacity>
+          </TouchableOpacity>
+        </TouchableOpacity>
+      </Modal>
 
     </ThemedView>
   );
@@ -78,6 +104,49 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: -2,
   },
+  helpIcon: {
+    position: 'absolute',
+    top: 60,
+    left: 20,
+    zIndex: 10,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalBox: {
+    backgroundColor: 'white',
+    padding: 24,
+    borderRadius: 16,
+    width: '80%',
+    alignItems: 'center',
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 12,
+    color: '#2E443E',
+  },
+  modalText: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#2E443E',
+    marginBottom: 20,
+  },
+  modalCloseButton: {
+    backgroundColor: '#345641',
+    paddingVertical: 10,
+    paddingHorizontal: 24,
+    borderRadius: 20,
+  },
+  modalCloseText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+
 });
 
 /* Kilder
