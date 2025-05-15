@@ -24,13 +24,14 @@ export default function IndexScreen() {
       </ThemedView>
 
       <TouchableOpacity style={styles.helpIcon} onPress={() => setModalVisible(true)}>
-        <Ionicons name="help-circle-outline" size={30} color="#345641" />
+        <Ionicons name="help-circle-outline" size={30} color="#345641" accessibilityLabel='Question mark' />
       </TouchableOpacity>
 
       <Image
         source={require('../../assets/images/Logo_bildeogtekst.png')}
         style={styles.logo}
         resizeMode="contain"
+        accessibilityLabel="Logo - BCAT"
       />
 
       {/* Nesteknappen
