@@ -22,7 +22,9 @@
     "@react-native-async-storage/async-storage": "2.1.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
+    "@sanity/client": "^7.2.1",
     "expo": "~53.0.5",
+    "expo-av": "~15.1.4",
     "expo-blur": "~14.1.4",
     "expo-constants": "~17.1.5",
     "expo-font": "~13.3.1",
@@ -50,8 +52,7 @@
     "react-native-svg": "15.11.2",
     "react-native-swipe-gestures": "^1.0.5",
     "react-native-web": "0.20.0",
-    "react-native-webview": "13.13.5",
-    "expo-av": "~15.1.4"
+    "react-native-webview": "13.13.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

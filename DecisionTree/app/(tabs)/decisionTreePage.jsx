@@ -10,6 +10,7 @@ import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback } from 'react';
 import TransitionMessage from '../../components/TransitionMessage';
 import Header from '../../components/Header';
+import { stopPointLog } from '../../api/stopPointLog' 
 import ProgressBar from '../../components/ProgressBar'; 
 
 
@@ -88,6 +89,12 @@ const DecisionTreePage = () => {
     const updatedAnswers = { ...answers, [currentNode.id]: selectedOption.label };
     setAnswers(updatedAnswers);
   
+    // 🔴 Kun logg røde svar:
+    if (selectedOption.feedbackType === 'red') {
+      console.log('Logger stoppunkt og spørsmål:', currentNode.question, currentNode.id);
+      stopPointLog(currentNode.id, currentNode.question);
+    }
+  
     if (selectedOption.feedbackType) {
       if (selectedOption.next) {
         const nextNode = decisionTreeData.find((n) => n.id === selectedOption.next);
@@ -114,7 +121,6 @@ const DecisionTreePage = () => {
       setCurrentId(nextVisible);
     }
   };
-  
 
   const handleGoBack = () => {
     if (history.length > 0) {
@@ -146,6 +152,8 @@ const DecisionTreePage = () => {
       }
     
       setFeedbackOption(null)
+      console.log('Feedback message:', message)
+
     }
     
 
