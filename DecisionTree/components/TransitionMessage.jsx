@@ -13,13 +13,14 @@ export default function TransitionMessage({ message, onNext, progress }) {
         source={require('../assets/images/warning_green.png')}
         style={styles.icon}
         resizeMode="contain"
+        accessibilityLabel='Green GO-icon that '
       />
 
       <ThemedText type="title" style={styles.text}>
         {message}
       </ThemedText>
 
-      <View style={{ height: 30, marginBottom: 50, marginTop: 40 }}><ProgressBar progress={progress} /></View>
+      <ParallaxScrollView noPadding> style={{ height: 30, marginBottom: 50, marginTop: 40 }}<ProgressBar progress={progress} /></ParallaxScrollView>
 
       <NextButton onPress={onNext} text={t('NEXT')} style={{ marginTop: 32 }} />
     </ParallaxScrollView>
