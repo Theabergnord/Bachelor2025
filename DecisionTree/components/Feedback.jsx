@@ -6,25 +6,29 @@ import NextButton from './NextButton'
 import ExitButton from './ExitButton'
 import ParallaxScrollView from './ParallaxScrollView'
 
-const feedbackMap = {
-  red: {
-    color: '#AF0012',
-    icon: require('../assets/images/warning_red.png'),
-  },
-  yellow: {
-    color: '#ECB01F',
-    icon: require('../assets/images/warning_yellow.png'),
-  },
-  green: {
-    color: null,
-    icon: null,
-  },
-}
-
 export default function Feedback({ feedbackType = 'green', message = '', onNext }) {
   const { t } = useTranslation()
   const router = useRouter()
-  const { color, icon } = feedbackMap[feedbackType]
+
+  const feedbackMap = {
+    red: {
+      color: '#AF0012',
+      icon: require('../assets/images/warning_red.png'),
+      accessibilityLabel: t('ALT_REDICON'),
+    },
+    yellow: {
+      color: '#ECB01F',
+      icon: require('../assets/images/warning_yellow.png'),
+      accessibilityLabel: t('ALT_YELLOWICON'),
+    },
+    green: {
+      color: null,
+      icon: null,
+      accessibilityLabel: null,
+    },
+  }
+
+  const { color, icon, accessibilityLabel } = feedbackMap[feedbackType]
   const showFeedback = feedbackType !== 'green'
   const isRed = feedbackType === 'red'
 

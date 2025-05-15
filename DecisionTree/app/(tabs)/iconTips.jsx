@@ -52,6 +52,7 @@ export default function ProgressTips() {
                       source={require('@/assets/images/warning_green.png')}
                       style={styles.inlineIcon}
                       resizeMode="contain"
+                      accessibilityLabel={t('ALT_GREENICON')}
                     />
                     <View style={styles.textContainer}>
                       <ThemedText style={styles.text_inline}>{t('GREEN_T')}</ThemedText>
@@ -64,6 +65,7 @@ export default function ProgressTips() {
                       source={require('@/assets/images/warning_yellow.png')}
                       style={styles.inlineIcon}
                       resizeMode="contain"
+                      accessibilityLabel={t('ALT_YELLOWICON')}
                     />
                     <View style={styles.textContainer}>
                       <ThemedText style={styles.text_inline}>{t('YELLOW_T')}</ThemedText>
@@ -76,6 +78,7 @@ export default function ProgressTips() {
                       source={require('@/assets/images/warning_red.png')}
                       style={styles.inlineIcon}
                       resizeMode="contain"
+                      accessibilityLabel={t('ALT_REDICON')}
                     />
                     <View style={styles.textContainer}>
                       <ThemedText style={styles.text_inline}>{t('RED_T')}</ThemedText>
