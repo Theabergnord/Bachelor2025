@@ -693,7 +693,7 @@ const decisionTreeDataNO = [
   {
     id: 'complete',
     isTransition: true,
-    message: 'Steg 8 er fullført!\n \nDu har fullført beslutningsprosessen for vurdering av kroppssammensetning, og kan nå gå videre med å gjennomføre en trygg kroppssammensetningsvurdering.',
+    message: 'Steg 8 er fullført!\n \nDu har fullført beslutningsprosessen for vurdering av kroppssammensetning, og kan nå gå videre med å gjennomføre en trygg og forsvarlig måling.',
   }
 ];
 

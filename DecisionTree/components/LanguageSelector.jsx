@@ -6,8 +6,8 @@ import i18next from 'i18next';
 import { LANGUAGE_PREFERENCE_KEY } from '@/lang/i18n';
 
 const languages = [
-  { code: 'en', label: 'English', flag: '🇬🇧', accessibilityLabel: 'English'},
-  { code: 'no', label: 'Norsk', flag: '🇳🇴', accessibilityLabel: 'Norwegian'},
+  { code: 'en', label: 'English', flag: '🇬🇧', accessibilityLabel: 'English', accessibilityRole: "button"},
+  { code: 'no', label: 'Norsk', flag: '🇳🇴', accessibilityLabel: 'Norwegian', accessibilityRole: "button"},
 ];
 
 const LanguageSelector = () => {
@@ -29,7 +29,7 @@ const LanguageSelector = () => {
 
   return (
     <View>
-      <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.languageToggle}>
+      <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.languageToggle} accessibilityRole="button">
   <Text style={styles.languageLabel}>
     {t('LANGUAGE')}{' '} {currentFlag}
   </Text>
@@ -44,6 +44,7 @@ const LanguageSelector = () => {
                 key={lang.code}
                 style={styles.option}
                 onPress={() => saveLanguage(lang.code)}
+                accessibilityRole="button"
               >
                 <Text style={styles.optionText}>{lang.label}</Text>
                 <Text style={styles.optionFlag}>{lang.flag}</Text>

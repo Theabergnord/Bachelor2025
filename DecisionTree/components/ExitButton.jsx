@@ -2,7 +2,7 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 export default function ExitButton({ onPress = () => {}, text = 'Avslutt' }) {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={styles.button} onPress={onPress} accessibilityRole="button">
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );

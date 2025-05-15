@@ -20,7 +20,7 @@ export default function TransitionMessage({ message, onNext, progress }) {
         {message}
       </ThemedText>
 
-      <ParallaxScrollView noPadding> style={{ height: 30, marginBottom: 50, marginTop: 40 }}<ProgressBar progress={progress} /></ParallaxScrollView>
+      <View style={{ height: 30, marginBottom: 50, marginTop: 40 }}><ProgressBar progress={progress} accessibilityRole="progressbar" accessibilityValue={{min: 0, max: 100, now: progress}}/></View>
 
       <NextButton onPress={onNext} text={t('NEXT')} style={{ marginTop: 32 }} />
     </ParallaxScrollView>

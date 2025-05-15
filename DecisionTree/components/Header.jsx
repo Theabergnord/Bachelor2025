@@ -8,7 +8,7 @@ export default function Header( {onBackPress} ) {
   const { t } = useTranslation();
   return (
     <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={onBackPress ? onBackPress : () => router.back()} style={styles.backButton}>
+      <TouchableOpacity onPress={onBackPress ? onBackPress : () => router.back()} style={styles.backButton} accessibilityRole="button">
         <View style={styles.backButtonContent}>
           <Ionicons name="arrow-back" size={23} color="#345641" />
           <Text style={styles.backButtonText}>{t('PREVIOUS')}</Text>

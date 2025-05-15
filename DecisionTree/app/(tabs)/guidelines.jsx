@@ -65,6 +65,7 @@ const GuidelinesScreen = () => {
             key={guideline.number}
             style={styles.guidelineCell}
             onPress={() => handleNumberPress(guideline.number)}
+            accessibilityRole="button"
           >
             <View style={[ styles.guidelineNumberCircle, 
             { backgroundColor: 'white', borderColor: fillColor, borderWidth: 5 }
