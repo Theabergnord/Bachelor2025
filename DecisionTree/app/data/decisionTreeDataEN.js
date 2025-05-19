@@ -699,7 +699,7 @@ const decisionTreeDataEN = [
       {
         id: 'complete',
         isTransition: true,
-        message: 'All steps are complete!\n\nYou have successfully completed the BC assessment decision process, and can now proceed with carrying out a safe body composition assessment.',
+        message: 'All steps are complete!\n\nGreat, it seems that you are well prepared for conducting athlete assessments, with solid safety procedures in place for both preparation and potential follow-up. You are now well positioned to carry out the assessments in a recommended and professional manner.',
       }
   ];
   
