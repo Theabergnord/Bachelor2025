@@ -88,12 +88,12 @@ const DecisionTreePage = () => {
     const updatedAnswers = { ...answers, [currentNode.id]: selectedOption.label };
     setAnswers(updatedAnswers);
 
-    // ✅ Logg hvis siste spørsmål er fullført
+    //Logg hvis siste spørsmål er fullført
     if (currentNode.id === 'q37') {
       completedLogs('Brukeren har fullført hele beslutningstreet', 'Fullført');
     }
 
-    // 🔴 Kun logg røde svar
+    //Logg røde svar
     if (selectedOption.feedbackType === 'red') {
       console.log('Logger stoppunkt og spørsmål:', currentNode.question, currentNode.id);
       stopPointLog(currentNode.id, currentNode.question);
