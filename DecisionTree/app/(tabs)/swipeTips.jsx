@@ -34,6 +34,7 @@ export default function SwipeTips() {
         onSwipeLeft={() => router.back()}
         config={{ velocityThreshold: 0.3, directionalOffsetThreshold: 80 }}
         style={{ flex: 1 }}
+        accessibilityLabel={t('ALT_SWIPEHAND')}
       >
         <ThemedView style={styles.container}>
           <Header />

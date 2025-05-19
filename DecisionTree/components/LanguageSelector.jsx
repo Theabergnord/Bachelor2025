@@ -6,8 +6,8 @@ import i18next from 'i18next';
 import { LANGUAGE_PREFERENCE_KEY } from '@/lang/i18n';
 
 const languages = [
-  { code: 'en', label: 'English', flag: '🇬🇧' },
-  { code: 'no', label: 'Norsk', flag: '🇳🇴' },
+  { code: 'en', label: 'English', flag: '🇬🇧', accessibilityLabel: 'English'},
+  { code: 'no', label: 'Norsk', flag: '🇳🇴', accessibilityLabel: 'Norwegian'},
 ];
 
 const LanguageSelector = () => {

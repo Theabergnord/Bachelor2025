@@ -13,7 +13,7 @@ export default function TransitionMessage({ message, onNext, progress }) {
         source={require('../assets/images/warning_green.png')}
         style={styles.icon}
         resizeMode="contain"
-        accessibilityLabel='Green GO-icon that '
+        accessibilityLabel={t('ALT_GREENICON')}
       />
 
       <ThemedText type="title" style={styles.text}>
