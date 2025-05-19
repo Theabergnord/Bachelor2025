@@ -11,6 +11,8 @@ import { useCallback } from 'react';
 import TransitionMessage from '../../components/TransitionMessage';
 import Header from '../../components/Header';
 import ProgressBar from '../../components/ProgressBar'; 
+import { View } from 'react-native';
+
 
 const DecisionTreePage = () => {
   const { t, i18n } = useTranslation();
@@ -137,10 +139,15 @@ const DecisionTreePage = () => {
     return (
       <ParallaxScrollView>
         <TransitionMessage
-          message={currentNode.message}
-          onNext={() => setCurrentId(currentNode.next)}
-        />
-        <ProgressBar step={stepNumber} stepProgress={stepProgress} progress={overallProgress} />
+        message={currentNode.message}
+        onNext={() => setCurrentId(currentNode.next)}
+        step={stepNumber}
+        stepProgress={stepProgress}
+        progress={overallProgress}
+      />
+
+  
+
       </ParallaxScrollView>
     );
   }
