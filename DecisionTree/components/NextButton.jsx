@@ -7,6 +7,7 @@ export default function NextButton({ onPress = () => {}, text = 'Neste', feedbac
     <TouchableOpacity
       style={[styles.button, isRed && styles.buttonRed]}
       onPress={onPress}
+      accessibilityRole="button"
     >
       <Text style={[styles.text, isRed && styles.textRed]}>
         {text}

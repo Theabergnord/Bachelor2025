@@ -48,19 +48,19 @@ const Questions = ({ stepTitle, stepNumber, totalSteps, question, onAnswer, prog
           <ThemedText style={styles.question}>{question}</ThemedText>
 
           <ThemedView style={[styles.buttonContainer, { bottom: buttonBottom }]}>
-            <TouchableOpacity style={styles.noButton} onPress={() => triggerSwipe(false)}>
+            <TouchableOpacity style={styles.noButton} onPress={() => triggerSwipe(false)} accessibilityRole="button">
               <ThemedText style={styles.noButtonText}>{t('NO')}</ThemedText>
             </TouchableOpacity>
 
             <View style={styles.separator} />
 
-            <TouchableOpacity style={styles.yesButton} onPress={() => triggerSwipe(true)}>
+            <TouchableOpacity style={styles.yesButton} onPress={() => triggerSwipe(true)} accessibilityRole="button">
               <ThemedText style={styles.yesButtonText}>{t('YES')}</ThemedText>
             </TouchableOpacity>
           </ThemedView>
         </Animated.View>
       </GestureRecognizer>
-      <ProgressBar progress={progress} bottomInset={insets.bottom} />
+      <ProgressBar progress={progress} bottomInset={insets.bottom} accessibilityRole="progressbar" accessibilityValue={{min: 0, max: 100, now: progress}}/>
     </>
   );
 };
@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: '#345641',
     borderWidth: 2,
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#345641',
     borderColor: '#345641',
     borderWidth: 2,
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',

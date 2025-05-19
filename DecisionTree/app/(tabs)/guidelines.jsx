@@ -1,34 +1,31 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Modal, Platform } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-{/*import Header from '@/components/Header'*/}
-
 
 const GuidelinesScreen = () => {
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
   const [selectedNumber, setSelectedNumber] = useState(null);
+  const [selectedKey, setSelectedKey] = useState(null);
+  const [selectedTitleKey, setSelectedTitleKey] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const router = useRouter();
   const { t } = useTranslation();
 
-  const guidelines = [
-    { number: 1, titleKey: 'G1' },
-    { number: 2, titleKey: 'G2' },
-    { number: 3, titleKey: 'G3' },
-    { number: 4, titleKey: 'G4' },
-    { number: 5, titleKey: 'G5' },
-    { number: 6, titleKey: 'G6' },
-    { number: 7, titleKey: 'G7' },
-    { number: 8, titleKey: 'G8' },
-  ];
+  const guidelines = numbers.map((number) => ({
+    number,
+    titleKey: `G${number}`,
+    textKey: `G${number}_TEXT`,
+  }));
 
   const handleNumberPress = (number) => {
     setSelectedNumber(number);
+    setSelectedKey(`G${number}_TEXT`);
+    setSelectedTitleKey(`G${number}`);
     setModalVisible(true);
   };
 
@@ -37,49 +34,47 @@ const GuidelinesScreen = () => {
   const centerX = outerRadius + 10;
   const centerY = outerRadius + 10;
 
-  const leftColumn = guidelines.slice(0, 4);
-  const rightColumn = guidelines.slice(4, 8);
-
   const lightGreen = [167, 200, 176];
   const darkGreen = [26, 49, 38];
 
   return (
     <ParallaxScrollView>
-    <ThemedView style={styles.container}>
-      {/* Tittel */}
-      {/* Usikker på om skal med!   <ThemedText style={styles.subtitle}>{t('TITLE_GUIDELINES')}</ThemedText> */}
-      <ThemedText style={styles.title}>{t('GUIDELINES_TITLE')}</ThemedText>
+      <ThemedView style={styles.container}>
+        <ThemedText style={styles.title}>{t('GUIDELINES_TITLE')}</ThemedText>
 
         <View style={styles.guidelineTable}>
-  {Array.from({ length: 4 }, (_, i) => (
-    <View key={i} style={styles.guidelineRow}>
-      {[guidelines[i], guidelines[i + 4]].map((guideline, j) => {
-        const index = i + j * 4;
-        const r = Math.round(lightGreen[0] - (index * (lightGreen[0] - darkGreen[0]) / (guidelines.length - 1)));
-        const g = Math.round(lightGreen[1] - (index * (lightGreen[1] - darkGreen[1]) / (guidelines.length - 1)));
-        const b = Math.round(lightGreen[2] - (index * (lightGreen[2] - darkGreen[2]) / (guidelines.length - 1)));
-        const fillColor = `rgb(${r}, ${g}, ${b})`;
+          {Array.from({ length: 4 }, (_, i) => (
+            <View key={i} style={styles.guidelineRow}>
+              {[guidelines[i], guidelines[i + 4]].map((guideline, j) => {
+                const index = i + j * 4;
+                const r = Math.round(lightGreen[0] - (index * (lightGreen[0] - darkGreen[0]) / (guidelines.length - 1)));
+                const g = Math.round(lightGreen[1] - (index * (lightGreen[1] - darkGreen[1]) / (guidelines.length - 1)));
+                const b = Math.round(lightGreen[2] - (index * (lightGreen[2] - darkGreen[2]) / (guidelines.length - 1)));
+                const fillColor = `rgb(${r}, ${g}, ${b})`;
 
-        return (
-          <TouchableOpacity
-            key={guideline.number}
-            style={styles.guidelineCell}
-            onPress={() => handleNumberPress(guideline.number)}
-          >
-            <View style={[ styles.guidelineNumberCircle, 
-            { backgroundColor: 'white', borderColor: fillColor, borderWidth: 5 }
-            ]}>
-              <ThemedText style={styles.guidelineNumberText}>{guideline.number}</ThemedText>
+                return (
+                  <TouchableOpacity
+                    key={guideline.number}
+                    style={styles.guidelineCell}
+                    onPress={() => handleNumberPress(guideline.number)}
+                    accessibilityRole="button"
+                  >
+                    <View style={[
+                      styles.guidelineNumberCircle,
+                      { backgroundColor: 'white', borderColor: fillColor, borderWidth: 5 }
+                    ]}>
+                      <ThemedText style={styles.guidelineNumberText}>{guideline.number}</ThemedText>
+                    </View>
+                    <ThemedText style={styles.guidelineTitle}>{t(guideline.titleKey)}</ThemedText>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
-            <ThemedText style={styles.guidelineTitle}>{t(guideline.titleKey)}</ThemedText>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
-  ))}
-</View>
+          ))}
+        </View>
 
-<ThemedText style={styles.subtitle}>{t('GUIDELINE_CLICK')}</ThemedText>
+        <ThemedText style={styles.subtitle}>{t('GUIDELINE_CLICK')}</ThemedText>
+
         <View style={styles.circleContainer}>
           <Svg width={(outerRadius * 2) + 20} height={(outerRadius * 2) + 20}>
             {numbers.map((_, index) => {
@@ -122,10 +117,7 @@ const GuidelinesScreen = () => {
             return (
               <TouchableOpacity
                 key={`number-${index}`}
-                style={[
-                  styles.numberCircle,
-                  { position: 'absolute', left: x - 20, top: y - 20 },
-                ]}
+                style={[styles.numberCircle, { position: 'absolute', left: x - 20, top: y - 20 }]}
                 onPress={() => handleNumberPress(number)}
               >
                 <ThemedText style={styles.numberText}>{number}</ThemedText>
@@ -133,36 +125,36 @@ const GuidelinesScreen = () => {
             );
           })}
         </View>
-  
-      {/* Modal for å vise informasjon */}
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContent}>
-            <ThemedText style={styles.modalTitle}>{t('GUIDELINE_CIRCLE')} {selectedNumber}</ThemedText>
-            <ThemedText style={styles.modalBody}>
-              Dette er informasjonen om retningslinje {selectedNumber}.
-            </ThemedText>
-            <TouchableOpacity
-              onPress={() => setModalVisible(false)}
-              style={styles.closeButton}
-            >
-              <ThemedText style={styles.closeButtonText}>{t('CLOSE')}</ThemedText>
-            </TouchableOpacity>
+
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContent}>
+              <ThemedText style={styles.modalTitle}>
+                {selectedNumber}. {selectedTitleKey ? t(selectedTitleKey) : ''}
+              </ThemedText>
+              <ThemedText style={styles.modalBody}>
+                {selectedKey ? t(selectedKey) : ''}
+              </ThemedText>
+              <TouchableOpacity
+                onPress={() => setModalVisible(false)}
+                style={styles.closeButton}
+              >
+                <ThemedText style={styles.closeButtonText}>{t('CLOSE')}</ThemedText>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      </Modal>
-    </ThemedView>
+        </Modal>
+      </ThemedView>
     </ParallaxScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  //Må rydde opp litt i stylinga her, skal gjøre senere
   container: {
     flex: 1,
     alignItems: 'center',
@@ -183,21 +175,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
   },
-  guidelineListRow: {
+  guidelineRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
-    marginBottom: 0,
+    borderBottomWidth: 1,
+    borderColor: '#ccc',
   },
-  guidelineColumn: {
+  guidelineCell: {
     flex: 1,
-    paddingHorizontal: 0,
-  },
-  guidelineItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 0,
-    marginVertical: 0,
+    paddingVertical: 2,
+    paddingHorizontal: 5,
+    gap: 5,
   },
   guidelineNumberCircle: {
     width: 35,
@@ -222,21 +212,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: '#ccc',
   },
-  guidelineRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderBottomWidth: 1,
-    borderColor: '#ccc',
-  },
-  guidelineCell: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 2,
-    paddingHorizontal: 5,
-    gap: 5,
-  },
-  
   circleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -277,7 +252,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalTitle: {
-    fontSize: 22,
     fontSize: 18,
     fontFamily: 'Poppins_600SemiBold',
     color: '#2E443E',
@@ -297,10 +271,11 @@ const styles = StyleSheet.create({
   },
   closeButtonText: {
     color: 'white',
-    fontSize: 18,
-    fontFamily: 'Poppins_600SemiBold',
     fontSize: 16,
+    fontFamily: 'Poppins_600SemiBold',
   },
 });
 
 export default GuidelinesScreen;
+
+

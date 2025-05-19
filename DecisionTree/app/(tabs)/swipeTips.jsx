@@ -34,6 +34,7 @@ export default function SwipeTips() {
         onSwipeLeft={() => router.back()}
         config={{ velocityThreshold: 0.3, directionalOffsetThreshold: 80 }}
         style={{ flex: 1 }}
+        accessibilityRole="image"
         accessibilityLabel={t('ALT_SWIPEHAND')}
       >
         <ThemedView style={styles.container}>
@@ -45,7 +46,7 @@ export default function SwipeTips() {
           <SwipeAnimation />
 
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.noButton} activeOpacity={1}>
+            <TouchableOpacity style={styles.noButton} activeOpacity={1} accessibilityRole="button">
               <ThemedText style={styles.noButtonText}>{t('NO')}</ThemedText>
             </TouchableOpacity>
 

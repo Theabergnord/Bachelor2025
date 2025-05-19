@@ -37,7 +37,8 @@ export default function TabLayout() {
             <Ionicons
               name={focused ? "home" : "home-outline"}
               size={28}
-              color={color} 
+              color={color}
+              accessibilityRole="button" 
             />
           ),
         }}
@@ -56,6 +57,7 @@ export default function TabLayout() {
         }
         style={{ width: 28, height: 28 }}
         resizeMode="contain"
+        accessibilityRole="button"
       />
     ),
   }}
@@ -69,6 +71,7 @@ export default function TabLayout() {
               name={focused ? "git-branch" : "git-branch-outline"}
               size={28}
               color={color}
+              accessibilityRole="button"
             />
           ),
         }}
@@ -82,6 +85,7 @@ export default function TabLayout() {
               name={focused ? "ellipsis-horizontal" : "ellipsis-horizontal-outline"}
               size={28}
               color={color}
+              accessibilityRole="button"
             />
           ),
         }}

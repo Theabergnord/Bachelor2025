@@ -23,7 +23,7 @@ export default function IndexScreen() {
         <LanguageSelector />
       </ThemedView>
 
-      <TouchableOpacity style={styles.helpIcon} onPress={() => setModalVisible(true)}>
+      <TouchableOpacity style={styles.helpIcon} onPress={() => setModalVisible(true)} accessibilityRole="button">
         <Ionicons name="help-circle-outline" size={30} color="#345641" accessibilityLabel='Question mark' />
       </TouchableOpacity>
 
@@ -40,6 +40,7 @@ export default function IndexScreen() {
 <TouchableOpacity
   style={styles.startButton}
   onPress={() => router.push({ pathname: '/swipeTips', params: { reset: 'true' } })}
+  accessibilityRole="button"
 >
   <Text style={styles.startText}>{t('START')}</Text>
 </TouchableOpacity>
@@ -50,13 +51,13 @@ export default function IndexScreen() {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <TouchableOpacity style={styles.modalOverlay} onPress={() => setModalVisible(false)}>
+        <TouchableOpacity style={styles.modalOverlay} onPress={() => setModalVisible(false)} accessibilityRole="button">
           <TouchableOpacity style={styles.modalBox} activeOpacity={1}>
             <Text style={styles.modalTitle}>{t('ABOUT_APP_TITLE')}</Text>
             <Text style={styles.modalText}>
               {t('ABOUT_APP_TEXT')}
             </Text>
-            <TouchableOpacity style={styles.modalCloseButton} onPress={() => setModalVisible(false)}>
+            <TouchableOpacity style={styles.modalCloseButton} onPress={() => setModalVisible(false)} accessibilityRole="button">
               <Text style={styles.modalCloseText}>{t('CLOSE')}</Text>
             </TouchableOpacity>
           </TouchableOpacity>

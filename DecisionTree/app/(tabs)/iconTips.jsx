@@ -66,6 +66,7 @@ export default function ProgressTips() {
                       style={styles.inlineIcon}
                       resizeMode="contain"
                       accessibilityLabel={t('ALT_YELLOWICON')}
+                      accessibilityRole='image'
                     />
                     <View style={styles.textContainer}>
                       <ThemedText style={styles.text_inline}>{t('YELLOW_T')}</ThemedText>
@@ -79,6 +80,7 @@ export default function ProgressTips() {
                       style={styles.inlineIcon}
                       resizeMode="contain"
                       accessibilityLabel={t('ALT_REDICON')}
+                      accessibilityRole='image'
                     />
                     <View style={styles.textContainer}>
                       <ThemedText style={styles.text_inline}>{t('RED_T')}</ThemedText>
@@ -90,13 +92,13 @@ export default function ProgressTips() {
 
             {/* PROGRESSBAR */}
             <View style={styles.progressBarContainer}>
-              <ProgressBar progress={0} />
+              <ProgressBar progress={0} accessibilityRole='progressbar'/>
             </View>
           </View>
 
           {/* BUNN */}
           <View style={styles.bottomArea}>
-            <NextButton onPress={handleNext} text={t('NEXT')} />
+            <NextButton onPress={handleNext} text={t('NEXT')} accessibilityRole='button'/>
           </View>
         </ThemedView>
       </GestureRecognizer>
