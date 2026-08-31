@@ -208,7 +208,10 @@ const DecisionTreePage = () => {
   }
 
 const handleAnswer = (answer) => {
-  const selectedOption = currentNode.options[answer ? 0 : 1];
+  const expectedAnswer = answer ? 'yes' : 'no';
+  const selectedOption = currentNode.options.find(
+    (option) => normalizeAnswer(option.label) === expectedAnswer
+  ) ?? currentNode.options[answer ? 0 : 1];
 
   const updatedAnswers = {
     ...answers,
@@ -233,7 +236,7 @@ const handleAnswer = (answer) => {
         (node) => node.id === selectedOption.next
       );
 
-      if (nextNode?.isTransition) {
+      if (selectedOption.feedbackType === 'green' && nextNode?.isTransition) {
         setCurrentId(nextNode.id);
         return;
       }

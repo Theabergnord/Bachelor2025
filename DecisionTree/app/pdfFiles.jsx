@@ -18,6 +18,10 @@ const pdfFiles = {
     asset: require('../assets/PDF/ede-q_NO.pdf'),
     fallbackUri: `${pdfBaseUrl}/ede-q_NO.pdf`,
   },
+  'ijspp-article-p317.pdf': {
+    asset: require('../assets/PDF/ijspp-article-p317.pdf'),
+    fallbackUri: `${pdfBaseUrl}/ijspp-article-p317.pdf`,
+  },
   'metodetabell.pdf': {
     asset: require('../assets/PDF/metodetabell.pdf'),
     fallbackUri: `${pdfBaseUrl}/metodetabell.pdf`,

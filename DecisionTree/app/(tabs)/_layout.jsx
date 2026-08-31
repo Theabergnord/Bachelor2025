@@ -140,16 +140,18 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   tabItem: {
-    paddingVertical: 2,
+    paddingTop: 0,
+    paddingBottom: 5,
   },
   tabIcon: {
-    marginTop: 2,
+    marginTop: -1,
   },
   tabLabel: {
     fontFamily: 'Poppins_600SemiBold',
     fontSize: 10,
-    lineHeight: 13,
+    lineHeight: 15,
     marginTop: 1,
+    marginBottom: 2,
   },
   iconWrap: {
     width: 34,

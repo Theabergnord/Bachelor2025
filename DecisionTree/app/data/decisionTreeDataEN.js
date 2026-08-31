@@ -29,7 +29,7 @@ const decisionTreeDataEN = [
     {
       id: 'q3',
       step: 1,
-      question: 'Is the athlete competing at tier 3 or above?',
+      question: 'Is the athlete competing at tier 3 or above? See the [tier classification](pdf:ijspp-article-p317.pdf) for more information.',
       options: [
         { label: 'Yes', next: 'q4' },
         {
@@ -372,7 +372,7 @@ const decisionTreeDataEN = [
             label: 'No',
             feedbackType: 'red',
             feedbackMessage:
-              'Do not proceed with the measurement unless you are following a standardised protocol which is in place.\n\nFor DXA we recommend the following procedures: [DXA](pdf:dxa.pdf). See Table 3 and 4 specifically.\n\nREDs resource: [Stars As You Are](https://starasyouare.com/en/).',
+              'Do not proceed with the measurement unless you are following a standardised protocol which is in place.\n\nFor DXA we recommend the following procedures: [DXA](pdf:dxa.pdf). See Table 3 and 4 specifically.\n\nIf skinfold caliper assessment are used, these should follow standardisation from [ISAK](https://www.isak.global/).\n\nREDs resource: [Stars As You Are](https://starasyouare.com/en/).',
           },
         ],
       },
@@ -615,7 +615,7 @@ const decisionTreeDataEN = [
             label: 'No',
             feedbackType: 'yellow',
             feedbackMessage:
-              'Proceed with caution. The athlete should have sufficient input to the next steps and adequate support.',
+              'All assessments should be conducted as part of a planned schedule, with clear plans for appropriate follow-up actions, rather than simply being repeated over time as a means of monitoring or controlling numbers.\n\nProceed with caution. The athlete should have sufficient input to the next steps and adequate support.',
             next: 't7',
           },
         ],

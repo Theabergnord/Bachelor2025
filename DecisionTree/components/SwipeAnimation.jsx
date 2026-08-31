@@ -1,6 +1,26 @@
 import React from 'react';
 import { Platform, Image, StyleSheet } from 'react-native';
+import { useVideoPlayer, VideoView } from 'expo-video';
 import { useResponsiveLayout } from '@/hooks/useResponsiveLayout';
+
+const swipeVideo = require('../assets/images/swipe-left.mp4');
+
+function NativeSwipeVideo({ mediaSize }) {
+  const player = useVideoPlayer(swipeVideo, (videoPlayer) => {
+    videoPlayer.loop = true;
+    videoPlayer.muted = true;
+    videoPlayer.play();
+  });
+
+  return (
+    <VideoView
+      player={player}
+      nativeControls={false}
+      contentFit="contain"
+      style={[styles.media, { width: mediaSize, height: mediaSize }]}
+    />
+  );
+}
 
 export default function SwipeAnimation() {
   const { scale } = useResponsiveLayout();
@@ -16,18 +36,7 @@ export default function SwipeAnimation() {
     );
   }
 
-  const { Video } = require('expo-av');
-
-  return (
-    <Video
-      source={require('../assets/images/swipe-left.mp4')}
-      shouldPlay
-      isLooping
-      isMuted
-      resizeMode="contain"
-      style={[styles.media, { width: mediaSize, height: mediaSize }]}
-    />
-  );
+  return <NativeSwipeVideo mediaSize={mediaSize} />;
 }
 
 const styles = StyleSheet.create({

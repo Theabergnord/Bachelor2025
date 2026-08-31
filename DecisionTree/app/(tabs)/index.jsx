@@ -86,11 +86,28 @@ export default function IndexScreen() {
         style={[styles.logo, {
           width: logoSize,
           height: logoSize,
-          marginBottom: isSmallPhone ? 44 : 84,
+          marginBottom: 10,
         }]}
         resizeMode="contain"
         accessibilityLabel="Logo - BCAT"
       />
+
+      <ThemedView
+        style={[
+          styles.titleBlock,
+          {
+            marginBottom: isSmallPhone ? 30 : 54,
+            maxWidth: Math.min(width - horizontalPadding * 2, 520),
+          },
+        ]}
+      >
+        <Text style={[styles.fullTitle, { fontSize: scale(17, 15, 20) }]}>
+          Body Composition Assessment Tool
+        </Text>
+        <Text style={[styles.tagline, { fontSize: scale(12, 10, 14) }]}>
+          {t('HOME_TAGLINE')}
+        </Text>
+      </ThemedView>
 
       {/* Nesteknappen
       <NextButton onPress={handleNeste} text="Neste" />*/}
@@ -154,6 +171,24 @@ const styles = StyleSheet.create({
   },
   logo: {
     maxWidth: '100%',
+  },
+  titleBlock: {
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+  },
+  fullTitle: {
+    color: '#345641',
+    fontFamily: 'Poppins_600SemiBold',
+    lineHeight: 24,
+    textAlign: 'center',
+  },
+  tagline: {
+    color: '#345641',
+    fontFamily: 'Poppins_400Regular',
+    lineHeight: 18,
+    marginTop: 7,
+    opacity: 0.92,
+    textAlign: 'center',
   },
   actionContainer: {
     alignItems: 'center',
