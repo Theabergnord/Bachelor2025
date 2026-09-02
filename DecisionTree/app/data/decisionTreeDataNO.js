@@ -29,7 +29,7 @@ const decisionTreeDataNO = [
   {
     id: 'q3',
     step: 1,
-    question: 'Konkurrerer utøveren på nasjonalt nivå eller høyere? Se [tier-inndelingen](pdf:ijspp-article-p317.pdf) for mer informasjon.',
+    question: 'Konkurrerer utøveren på nasjonalt nivå eller høyere?',
     options: [
       { label: 'Ja', next: 'q4' },
       {
@@ -371,7 +371,7 @@ const decisionTreeDataNO = [
         label: 'Nei',
         feedbackType: 'red',
         feedbackMessage:
-          'Ikke gjennomfør vurderingen med mindre du følger en etablert standardisert protokoll.\n\nVed DXA anbefaler vi følgende prosedyrer: [DXA](pdf:dxa.pdf). Se spesielt tabell 3 og 4.\n\nDersom bruk av hudfoldtykkelse-kalipermåling benyttes bør dette følge standardiseringen til [ISAK](https://www.isak.global/).\n\nRessurs om REDs: [Stars As You Are](https://starasyouare.com/en/).',
+          'Ikke gjennomfør vurderingen med mindre du følger en etablert standardisert protokoll.\n\nVed DXA anbefaler vi følgende prosedyrer: [DXA](pdf:dxa.pdf). Se spesielt tabell 3 og 4.\n\nDersom bruk av hudfoldtykkelse-kalipermåling benyttes bør dette følge standardiseringen til [ISAK](https://www.isak.global/).',
       },
     ],
   },

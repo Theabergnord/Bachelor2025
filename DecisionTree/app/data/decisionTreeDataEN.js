@@ -372,7 +372,7 @@ const decisionTreeDataEN = [
             label: 'No',
             feedbackType: 'red',
             feedbackMessage:
-              'Do not proceed with the measurement unless you are following a standardised protocol which is in place.\n\nFor DXA we recommend the following procedures: [DXA](pdf:dxa.pdf). See Table 3 and 4 specifically.\n\nIf skinfold caliper assessment are used, these should follow standardisation from [ISAK](https://www.isak.global/).\n\nREDs resource: [Stars As You Are](https://starasyouare.com/en/).',
+              'Do not proceed with the measurement unless you are following a standardised protocol which is in place.\n\nFor DXA we recommend the following procedures: [DXA](pdf:dxa.pdf). See Table 3 and 4 specifically.\n\nIf skinfold caliper assessment are used, these should follow standardisation from [ISAK](https://www.isak.global/).',
           },
         ],
       },
